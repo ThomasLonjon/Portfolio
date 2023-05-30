@@ -6,26 +6,35 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
 // ---------------------------------------- FUNCTION----------------------------------------
 
-function MyMap({ latitude, longitude, zoom }) {
+function MyMap({ latitude, longitude, zoom, pitch, isChosen }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
   useEffect(() => {
+    if (map.current) {
+      map.current.remove(); // Supprime l'ancienne instance de la carte
+    }
+
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      // style: "mapbox://styles/thomaslonjon/clhgjollg01ec01p6clov3ebc",
       style: "mapbox://styles/thomaslonjon/clhz4ydld02dr01pg5mdkaycb",
       center: [latitude, longitude],
       zoom: zoom,
       antialias: true,
     });
+  }, []);
 
-    // map.addControl(
-    //   new MapboxDirections({
-    //     accessToken: mapboxgl.accessToken,
-    //   }),
-    //   "top-left"
-    // );
+  useEffect(() => {
+    if (isChosen) {
+      map.current.flyTo({
+        center: [latitude, longitude],
+        essential: true,
+        duration: 12000,
+        zoom: zoom,
+        pitch: pitch,
+      });
+      return;
+    }
   }, [latitude, longitude]);
 
   // ---------------------------------------- RETURN----------------------------------------
@@ -39,6 +48,5 @@ MyMap.propTypes = {
   longitude: PropTypes.number.isRequired,
   latitude: PropTypes.number.isRequired,
   zoom: PropTypes.number.isRequired,
-  handleChange: PropTypes.func.isRequired,
   isChosen: PropTypes.bool.isRequired,
 };
