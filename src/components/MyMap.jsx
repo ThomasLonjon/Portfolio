@@ -30,11 +30,7 @@ function MyMap({ latitude, longitude, zoom }) {
 
   // ---------------------------------------- RETURN----------------------------------------
 
-  return (
-    <div className="map-container">
-        <div ref={mapContainer} className="map" />
-    </div>
-  );
+  return <div ref={mapContainer} className="map" />;
 }
 
 export default MyMap;
