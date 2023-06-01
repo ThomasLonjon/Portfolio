@@ -29,7 +29,7 @@ function MyMap({ latitude, longitude, zoom, pitch, isChosen }) {
       map.current.flyTo({
         center: [latitude, longitude],
         essential: true,
-        duration: 12000,
+        duration: 9000,
         zoom: zoom,
         pitch: pitch,
       });
@@ -47,6 +47,7 @@ export default MyMap;
 MyMap.propTypes = {
   longitude: PropTypes.number.isRequired,
   latitude: PropTypes.number.isRequired,
+  pitch: PropTypes.number.isRequired,
   zoom: PropTypes.number.isRequired,
   isChosen: PropTypes.bool.isRequired,
 };
