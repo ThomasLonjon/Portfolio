@@ -152,6 +152,7 @@ h3 {
 // ---------------------------------------------card1------------------------------------------------
 
 .card1 {
+	transform: rotate(10deg);
 	width: 40vw;
 	height: 85vh;
 	position: absolute;
@@ -161,6 +162,7 @@ h3 {
 	flex-direction: column;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+
 
 	h3 {
 		margin-top: 7%;
