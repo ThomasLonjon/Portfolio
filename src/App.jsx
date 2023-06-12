@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
-import MyMap from "./components/MyMap";
+import Map1 from "./components/Map1";
+import Map2 from "./components/Map2";
+import Map3 from "./components/Map3";
+import Slider from "./components/Slider";
 import "./App.scss";
 import mapboxgl from "mapbox-gl";
 
@@ -18,18 +21,18 @@ function App() {
 
   const [position2, setPosition2] = useState({
     mapNumber: 2,
-    lat: 9.12,
-    lng: 42.21,
-    zoom: 6.9,
+    lat: 5.492516199502727,
+    lng: 43.21716380376564,
+    zoom: 7.2,
     pitch: 0,
     isChosen: false,
   });
 
   const [position3, setPosition3] = useState({
     mapNumber: 3,
-    lat: 0.9,
-    lng: 47,
-    zoom: 7.1,
+    lat: 9.12,
+    lng: 42.21,
+    zoom: 6.9,
     pitch: 0,
     isChosen: false,
   });
@@ -45,18 +48,36 @@ function App() {
     third: false,
   });
 
+  const [rangeValue, setRangeValue] = useState(10);
+
+  const [zIndex, setZIndex] = useState({
+    card1: 1,
+    card2: 3,
+    card3: 0,
+    card4: 2,
+  });
+
+  // ---------------------------------------------HandleIndex-----------------------------------------
+
+  const handleIndex = (divID) => {
+    setZIndex((prevState) => {
+      let arr = Object.values(zIndex);
+      let max = Math.max(...arr);
+      return {
+        ...prevState,
+        [divID]: max + 1,
+      };
+    });
+  };
+
   // ---------------------------------------------HandleClick Button-----------------------------------------
 
   const handleClick1 = () => {
-    setIsClicked({ first: true, second: false, third: false });
+    setIsClicked({ ...isClicked, first: true, second: false });
   };
 
   const handleClick2 = () => {
-    setIsClicked({ first: false, second: true, third: false });
-  };
-
-  const handleClick3 = () => {
-    setIsClicked({ first: false, second: false, third: true });
+    setIsClicked({ ...isClicked, first: false, second: true });
   };
 
   // ----------------------------------------Handlechange Geocoder Input-----------------------------------------
@@ -66,6 +87,7 @@ function App() {
       lat: result.center[0],
       lng: result.center[1],
     });
+    // setIsClicked({ ...isClicked, third: true });
   };
   // -----------------------------------Handlechange Set Map Position -----------------------------------------
 
@@ -75,8 +97,8 @@ function App() {
       lat: a,
       lng: b,
       isChosen: true,
-      zoom: 15.1,
-      pitch: 50,
+      zoom: 12,
+      pitch: 0,
     });
   };
 
@@ -87,20 +109,9 @@ function App() {
       lng: b,
       isChosen: true,
       zoom: 15.1,
+      pitch: 50,
     });
   };
-
-  const handleChange3 = (a, b) => {
-    setPosition3({
-      ...position3,
-      lat: a,
-      lng: b,
-      isChosen: true,
-      zoom: 9,
-    });
-  };
-
-  const [route, setRoute] = useState({});
 
   // ---------------------------------------------Geocoder-----------------------------------------
 
@@ -127,21 +138,7 @@ function App() {
     if (isClicked.second) {
       handleChange2(positionGeoCoder.lat, positionGeoCoder.lng);
     }
-    if (isClicked.third) {
-      handleChange3(positionGeoCoder.lat, positionGeoCoder.lng);
-    }
   }, [positionGeoCoder.lat, positionGeoCoder.lng]);
-
-  // ---------------------------------------- getDirection----------------------------------------
-
-  useEffect(() => {
-    fetch(
-      "https://api.mapbox.com/directions/v5/mapbox/cycling/48,2;45,4?geometries=geojson&access_token=pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsaThwNTFnYzFsd3ozZnBjczN3aDlhYzcifQ.na2-On5k8L1PUKU8Em_-Ew"
-    )
-      .then((response) => response.json())
-      .then((data) => setRoute(data.routes[0].geometry.coordinates))
-      .catch((err) => console.error(err));
-  }, []);
 
   // ---------------------------------------------Return---------------------------------------------
 
@@ -153,54 +150,118 @@ function App() {
         <h2>DÉVELOPPEUR WEB FULLSTACK JS</h2>
       </div>
 
-      <Draggable cancel="strong">
-        <div className="card1">
-          <h3>EXPLOREZ DE NOUVELLES EXPERIENCES CARTOGRAPHIQUES</h3>
-          <MyMap {...position1} route={route} />
-          <p className="credits">Crédits : mapbox, openstreetMap, Madison Draper</p>
-        </div>
-      </Draggable>
-
-      <Draggable cancel="strong">
-        <div className="card2">
-          <div className="cursor">
-            <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
+      <div className="card1Container" onMouseDown={() => handleIndex("card1")} style={{ zIndex: `${zIndex["card1"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card1">
+            <h3>EXPLOREZ DE NOUVELLES EXPERIENCES CARTOGRAPHIQUES</h3>
+            <Map1 {...position1} rangeValue={rangeValue} />
+            <p className="credits">CARTE 1</p>
+            <div>
+              <Slider
+                maxRange={61}
+                defaultRange={10}
+                unit="minutes à vélo"
+                rangeValue={rangeValue}
+                setRangeValue={setRangeValue}
+              />
+            </div>
           </div>
-          <MyMap {...position2} route={route} />
-          <p className="credits">Crédits : mapbox, openstreetMap, Madison Draper</p>
-        </div>
-      </Draggable>
+        </Draggable>
+      </div>
 
-      <Draggable cancel="strong">
-        <div className="card3">
-          <div className="cursor">
-            <h3>CHANGEZ D&apos;ÉCHELLE</h3>
+      <div className="card2Container" onMouseDown={() => handleIndex("card2")} style={{ zIndex: `${zIndex["card2"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card2">
+            <h3>JOUEZ AVEC L&apos;ÉCHELLE</h3>
+            <Map2 {...position2} />
+            <p className="credits">CARTE 2</p>
           </div>
-          <MyMap {...position3} route={route} />
-          <p className="credits">Crédits : mapbox, openstreetMap, Madison Draper</p>
-        </div>
-      </Draggable>
+        </Draggable>
+      </div>
 
-      <Draggable cancel="strong">
-        <div className="card4">
-          <div className="cursor">
-            <h3>CHOISISSEZ VOTRE CARTE</h3>
-            <div className="buttonContainer">
-              <strong className={isClicked.first ? "clickedButton" : "button"} onClick={handleClick1}>
-                Carte 1
-              </strong>
-              <strong className={isClicked.second ? "clickedButton" : "button"} onClick={handleClick2}>
-                Carte 2
-              </strong>
-              <strong className={isClicked.third ? "clickedButton" : "button"} onClick={handleClick3}>
-                Carte 3
+      <div className="card3Container" onMouseDown={() => handleIndex("card3")} style={{ zIndex: `${zIndex["card3"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card3">
+            <div className="cursor">
+              <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
+            </div>
+            <Map3 {...position3} departure={position1} arrival={position2} isClicked={isClicked} />
+            <p className="credits">CARTE 3</p>
+          </div>
+        </Draggable>
+      </div>
+
+      <div className="card4Container" onMouseDown={() => handleIndex("card4")} style={{ zIndex: `${zIndex["card4"]}` }}>
+        <Draggable cancel="strong">
+          <div className={`card4 ${isClicked.first || isClicked.second ? "card4Tall" : "card4Small"}`}>
+            <div className="firstPart">
+              <h3>CHOISISSEZ VOTRE CARTE</h3>
+              <div className="buttonContainer">
+                <strong className={isClicked.first ? "clickedButton" : "button"} onClick={handleClick1}>
+                  Carte 1
+                </strong>
+                <strong className={isClicked.second ? "clickedButton" : "button"} onClick={handleClick2}>
+                  Carte 2
+                </strong>
+              </div>
+            </div>
+            <div className={isClicked.first || isClicked.second ? "secondPart" : "secondPartHidden"}>
+              <h3>TROUVEZ VOTRE DESTINATION</h3>
+              <strong className="no-cursor">
+                <div id="geocoder"></div>
               </strong>
             </div>
-            <h3>TROUVEZ VOTRE DESTINATION</h3>
           </div>
-          <strong className="no-cursor">
-            <div id="geocoder"></div>
-          </strong>
+        </Draggable>
+      </div>
+
+      <div className="AboutMe">
+        <div className="tape-section"></div>
+        <h1>À PROPOS</h1>
+        <p>
+          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
+          literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
+          College in Virginia
+        </p>
+        <p>
+          Looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the
+          cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
+          1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in
+          45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of
+          Lorem Ipsum
+        </p>
+      </div>
+
+      <div className="skills">
+        <div className="tape-section"></div>
+        <h1>COMPÉTENCES</h1>
+      </div>
+
+      <div className="contactMe">
+        <div className="tape-section"></div>
+        <h1>CONTACT</h1>
+      </div>
+
+      <div className="projects">
+        <div className="top-tape"></div>
+        <h1>MES PROJETS</h1>
+      </div>
+
+      <Draggable cancel="strong">
+        <div className="cardProject1">
+          <h3>HACKATON - HOLIMAP FOR HOLIDAYS</h3>
+        </div>
+      </Draggable>
+
+      <Draggable cancel="strong">
+        <div className="cardProject2">
+          <h3>THE MARIO PROJECT</h3>
+        </div>
+      </Draggable>
+
+      <Draggable cancel="strong">
+        <div className="cardProject3">
+          <h3>GUESS WHERE</h3>
         </div>
       </Draggable>
     </div>

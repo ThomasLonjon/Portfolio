@@ -7,14 +7,6 @@ mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 function MyMap({ mapNumber, lat, lng, zoom, pitch, isChosen, route }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
-  const [geojson, setGeojson] = useState({
-    type: "Feature",
-    properties: {},
-    geometry: {
-      type: "LineString",
-      coordinates: [],
-    },
-  });
 
   // ---------------------------------------- Add map----------------------------------------
   useEffect(() => {

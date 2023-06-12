@@ -1,10 +1,51 @@
 $font-family_1: "Federo";
 $font-family_2: "Fascinate";
 $font-family_3: "Graduate";
+$font-family_4: "FrancoisOne";
 $background-color_1: #e5e2d0;
 $background-color_2: #a6a6a6;
-$shadow : 0px 5px 5px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5);
+$shadow : 0px 5px 5px rgba(0, 0, 0, 10), 0px 2px 10px rgba(0, 0, 0, 10), rgb(38, 57, 77) 0px 20px 30px -10px;
+// $shadow : rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+// $shadow : rgb(38, 57, 77) 0px 20px 30px -10px;
 $shadowStiked : 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5);
+$radius : 0vw;
+$radiusMap : 0vw;
+
+
+
+// /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
+
+// body::after {
+// 	content: "";
+// 	position: fixed;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	opacity: 0.1;
+// 	pointer-events: none;
+// 	background-repeat: repeat;
+// 	animation-name: noise;
+// 	animation-duration: 0.5s;
+// 	animation-iteration-count: infinite;
+// 	animation-timing-function: steps(3);
+//   }
+  
+//   @keyframes noise {
+// 	from {
+// 	  background-image: url("../src/assets/img/Noise1.jpg");
+// 	}
+// 	33% {
+// 	  background-image: url("../src/assets/img/Noise2.jpg");
+// 	}
+// 	66% {
+// 	  background-image: url("../src/assets/img/Noise3.jpg");
+// 	}
+// 	to {
+// 	  background-image: url("../src/assets/img/Noise1.jpg");
+// 	}
+//   }
+
 
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -21,6 +62,11 @@ $shadowStiked : 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5)
 @font-face {
 	font-family: "Graduate";
 	src: url("../src/assets/fonts/Graduate-Regular.ttf") format("truetype");
+}
+
+@font-face {
+	font-family: "FrancoisOne";
+	src: url("../src/assets/fonts/FrancoisOne-Regular.ttf") format("truetype");
 }
 
 
@@ -42,6 +88,8 @@ $shadowStiked : 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5)
 	background: url(../src/assets/img/Bordless.png);
 	background-size: cover;
 	height: 200vh;
+
+    
 }
 
 
@@ -55,18 +103,21 @@ h1 {
 }
 
 h2 {
-	font-size: 1.2vw;
+	font-size: 1.25vw;
 	font-weight: 300;
 }
 
 h3 {
-	font-size: 1vw;
+	font-size: 1.25vw;
+	font-family: $font-family_1;
 }
 
 .credits {
-	font-family: $font-family_3;
-	font-size: 0.7vw;
-	text-align: right;
+	font-family: $font-family_1;
+	font-size: 1vw;
+	// padding-left: 5%;
+	text-align: center;
+	
 }
 
 
@@ -74,10 +125,11 @@ h3 {
 /*                                         Geocoder                                            
 /* ------------------------------------------------------------------------------------------------ */
 
+
 .mapboxgl-ctrl-geocoder{
 	margin-left : auto;
 	margin-right : auto;
-	width: 80%;
+	min-width: 100%;
 }
 
 .mapboxgl-ctrl-geocoder--icon{
@@ -86,10 +138,15 @@ h3 {
 
 .mapboxgl-ctrl-geocoder input[type='text']{
 	background-color: #cccab9;
-	height: 10%;
-	font-family: $font-family_3;
-	user-select: inherit;
+	font-family: $font-family_1;
+	user-select: auto;
 }
+
+
+.mapboxgl-ctrl-geocoder.mapboxgl-ctrl{
+	// box-shadow: none;
+}
+
 
 .mapboxgl-ctrl-geocoder input[type='text']::selection{
 	background: #fff;
@@ -101,38 +158,9 @@ h3 {
 }
 
 
-/* ------------------------------------------------------------------------------------------------ */
-/*                                         Buttons                                           
-/* ------------------------------------------------------------------------------------------------ */
-
-.buttonContainer{
-	width: 90%;
-	margin-top: 3%;
-	margin-right: auto;
-	margin-left:auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.button{
-	text-align: center;
-	width: 30%;
-	padding: 0.5vw;
-	background-color: #cccab9;
-	font-size: 1vw;
-}
-
-.clickedButton{
-	text-align: center;
-	width: 30%;
-	padding: 0.5vw;
-	background-color: #a09d89;
-	font-size: 1vw;
-}
 
 /* ------------------------------------------------------------------------------------------------ */
-/*                                          Cards                                              
+/*                                         Map Cards                                              
 /* ------------------------------------------------------------------------------------------------ */
 
 .cardTitle {
@@ -144,122 +172,387 @@ h3 {
 	justify-content: center;
 	flex-direction: column;
 	width: 40vw;
-	height: 12.5vh;
+	height: 11.5vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
 }
 
 // ---------------------------------------------card1------------------------------------------------
 
-.card1 {
-	transform: rotate(10deg);
+.card1Container{
+	transform: rotate(0deg);
+	position: relative;
+}
+
+
+.card1{
 	width: 40vw;
-	height: 85vh;
+	height: 90vh;
 	position: absolute;
-	top: 10vh;
-	left: 57vw;
+	top: 5vh;
+	left: 58vw;
+	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
 	flex-direction: column;
 	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
+	box-shadow: $shadow;
+	border-radius: $radius;
+
+	background-image: url(../src/assets/img/paper1.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
 
 
 	h3 {
-		margin-top: 7%;
+		text-align: center;
+		margin-top: 5%;
 		margin-bottom: 3%;
-		padding-left: 5%;
 	}
 
 	strong {
-		width: 90%;
-		height: 85%;
-		border: 1.5px solid #303030;
+		width: 93%;
+		height: 80%;
+		border: 4px solid #303030;
+		border-style: double;
 		margin: auto auto;
+		overflow: hidden;
 	}
 
 	p {
-		padding-top: 0.5%;
-		padding-right: 5%;
+		padding-top: 1%;
+		padding-bottom: 2%;
 	}
 }
+
+// .card1::before{
+// 	content: "";
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	background-image: url(../src/assets/img/paper1.png);
+// 	background-repeat: no-repeat;
+// 	background-position: center;
+// 	background-size: cover;
+// 	mix-blend-mode: multiply;
+// 	pointer-events: none;
+
+// }
+
+
 
 // ---------------------------------------------card2------------------------------------------------
 
-.card2 {
-	position: absolute;
-	top: 26vh;
-	left: 3vw;
-	align-items: center;
-	flex-direction: column;
-	width: 27vw;
-	height: 60vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-
-	h3 {
-		margin-top: 7%;
-		margin-bottom: 3%;
-		padding-left: 5%;
-	}
-
-	strong {
-		width: 90%;
-		height: 85%;
-		border: 1.5px solid #303030;
-		margin: auto auto;
-	}
-
-	p {
-		padding-top: 0.5%;
-		padding-right: 5%;
-	}
+.card2Container{
+	transform: rotate(-2deg);
+	position: relative;
 }
 
-// ---------------------------------------------card3------------------------------------------------
 
-.card3 {
+.card2 {
 	position: absolute;
 	top: 46vh;
-	left: 18vw;
+	left: 20vw;
+	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
 	flex-direction: column;
 	width: 30vw;
 	height: 50vh;
 	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
+	box-shadow: $shadow;
+	border-radius: $radius;
+
+
+	background-image: url(../src/assets/img/paper2.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
 
 	h3 {
-		margin-top: 7%;
+		text-align: center;
+		margin-top: 5%;
 		margin-bottom: 3%;
-		padding-left: 5%;
 	}
 
 	strong {
 		width: 90%;
 		height: 80%;
-		border: 1.5px solid #303030;
+		border: 4px solid #303030;
+		border-style: double;
 		margin: auto auto;
+		overflow: hidden;
+		
 	}
 
 	p {
-		padding-top: 0.5%;
-		padding-right: 5%;
+		padding-top: 1%;
+		padding-bottom: 2%;
+	}
+
+
+}
+
+
+// .card2::before{
+// 	content: "";
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	background-image: url(../src/assets/img/paper2.png);
+// 	background-repeat: no-repeat;
+// 	background-position: center;
+// 	background-size: cover;
+// 	mix-blend-mode: multiply;
+// 	pointer-events: none;
+
+// }
+
+
+// ---------------------------------------------card3------------------------------------------------
+
+.card3Container{
+	transform: rotate(0deg);
+	position: relative;
+}
+
+.card3 {
+	position: absolute;
+	top: 26vh;
+	left: 3vw;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: column;
+	width: 27vw;
+	height: 60vh;
+	background-color: $background-color_1;
+	box-shadow: $shadow;
+	border-radius: $radius;
+
+	background-image: url(../src/assets/img/paper2.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+
+	h3 {
+		text-align: center;
+		margin-top: 5%;
+		margin-bottom: 3%;
+	}
+
+	strong {
+		border: 4px solid #303030;
+		border-style: double;
+		width: 90%;
+		height: 85%;
+		margin: auto auto;
+		overflow: hidden;
+	}
+
+	p {
+		padding-top: 1%;
+		padding-bottom: 2%;
 	}
 }
 
+
 // ---------------------------------------------card4------------------------------------------------
+
+.card4Container{
+	transform: rotate(2deg);
+	position: relative;
+}
+
 
 .card4 {
 	position: absolute;
 	top: 20vh;
 	left: 35vw;
+	display: flex;
+	justify-content: space-evenly;
 	align-items: center;
 	flex-direction: column;
 	width: 20vw;
-	height: 22vh;
+	height: 23vh;
+	background-color: $background-color_1;
+	box-shadow: $shadow;
+	border-radius: $radius;
+                                                
+	h3 {
+		font-family:$font-family_1 ;
+		font-size: 1vw;
+		margin-top: 7%;
+		margin-bottom: 3%;
+		text-align: center;
+	}
+
+	strong.no-cursor {
+		width: 100%;
+		position: relative;
+
+	}
+
+	.firstPart{
+		width: 90%;
+	}
+
+	.secondPart{
+		width: 90%;
+	}
+
+	.secondPartHidden{
+		display: none;
+	}
+
+}
+
+.card4Small{
+	height: 13vh;
+}
+
+.card4Tall{
+	height: 23vh;
+}
+
+
+// .card4::before{
+// 	content: "";
+// 	position: absolute;
+// 	top: 0;
+// 	left: 0;
+// 	width: 100%;
+// 	height: 100%;
+// 	background-image: url(../src/assets/img/paper2.png);
+// 	background-repeat: no-repeat;
+// 	background-position: center;
+// 	background-size: cover;
+// 	mix-blend-mode: multiply;
+// 	pointer-events: none;
+// 	opacity: 50%;
+
+// }
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                         Presentation Cards                                              
+/* ------------------------------------------------------------------------------------------------ */
+
+
+// ---------------------------------------------About me------------------------------------------------
+
+.AboutMe {
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+	position: absolute;
+	top: 105vh;
+	left: 3vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 40vw;
+	height: 30vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
-	transform: rotate(2.3deg);
+
+	h1{
+		font-size: 2vw;
+		}
+	p{
+	font-size: 1vw;	
+	margin-top: 1vw;
+	}
+}
+
+// ---------------------------------------------Skills------------------------------------------------
+
+.skills {
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+	position: absolute;
+	top: 139vh;
+	left: 3vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 40vw;
+	height: 35vh;
+	background-color: $background-color_1;
+	box-shadow: $shadowStiked;
+
+	h1{
+	font-size: 2vw;
+	}
+
+	p{
+	font-size: 1vw;	
+	margin-top: 1vw;
+	}
+}
+
+
+// ---------------------------------------------Contact me------------------------------------------------
+
+
+.contactMe {
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+	position: absolute;
+	top: 178vh;
+	left: 3vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 40vw;
+	height: 17vh;
+	background-color: $background-color_1;
+	box-shadow: $shadowStiked;
+
+	h1{
+	font-size: 2vw;
+	}
+}
+
+// --------------------------------------------- projects------------------------------------------------
+
+.projects {
+	padding-left: 1.5vw;
+	padding-right: 1.5vw;
+	position: absolute;
+	top: 105vh;
+	left: 48vw;
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	width: 50vw;
+	height: 7vh;
+	background-color: $background-color_1;
+	box-shadow: $shadowStiked;
+
+	h1{
+	font-size: 2vw;
+	}
+}
+
+
+
+.cardProject1 {
+	position: absolute;
+	top: 116vh;
+	left: 52vw;
+	align-items: center;
+	flex-direction: column;
+	width: 22vw;
+	height: 35vh;
+	background-color: $background-color_1;
+	box-shadow: $shadowStiked;
 
 	h3 {
 		margin-top: 7%;
@@ -267,6 +560,141 @@ h3 {
 		padding-left: 5%;
 	}
 }
+
+
+.cardProject2 {
+	position: absolute;
+	top: 159vh;
+	left: 55vw;
+	align-items: center;
+	flex-direction: column;
+	width: 22vw;
+	height: 35vh;
+	background-color: $background-color_1;
+	box-shadow: $shadowStiked;
+
+	h3 {
+		margin-top: 7%;
+		margin-bottom: 3%;
+		padding-left: 5%;
+	}
+}
+
+
+.cardProject3 {
+	position: absolute;
+	top: 135vh;
+	left: 72vw;
+	align-items: center;
+	flex-direction: column;
+	width: 22vw;
+	height: 35vh;
+	background-color: $background-color_1;
+	box-shadow: $shadowStiked;
+
+	h3 {
+		margin-top: 7%;
+		margin-bottom: 3%;
+		padding-left: 5%;
+	}
+}
+
+
+
+
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                         Buttons                                           
+/* ------------------------------------------------------------------------------------------------ */
+
+.buttonContainer{
+	width: 100%;
+	margin-top: 3%;
+	margin-right: auto;
+	margin-left:auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.button{
+	text-align: center;
+	width: 48%;
+	padding: 0.5vw;
+	background-color: #cccab9;
+	font-size: 1vw;
+}
+
+.clickedButton{
+	text-align: center;
+	width: 48%;
+	padding: 0.5vw;
+	background-color: #a09d89;
+	font-size: 1vw;
+}
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                            Slider                                      
+/* ------------------------------------------------------------------------------------------------ */
+
+.sliderHidden{
+	display: none;
+}
+
+.sliderContainerHidden{
+	display: none;
+}
+
+
+.sliderContainer{
+	width: 50%;
+	margin-top: 1%;
+	margin-left: auto;
+	margin-right: auto;
+	margin-bottom: 3%;
+
+	strong {
+		border: none;
+	}
+}
+
+.slider {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 2px;
+	border-radius: 1px;
+	background: #b0b0b0;
+	outline: none;
+	-webkit-transition: 0.2s;
+	transition: opacity 0.2s;
+
+  }
+  
+  .slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 1vw;
+	height: 1vw;
+	border-radius: 50%;
+	background: #8c8c8c;
+	cursor: pointer;
+  }
+  
+  .textSlider {
+	color:  #202020;
+	text-align: center;
+	font-size: 1vw;
+  }
+
+
+
+
+
+
+
 
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -284,6 +712,12 @@ h3 {
 /*                                          Maps                                          
 /* ------------------------------------------------------------------------------------------------ */
 
+.map-container-overlay {
+	border-radius: $radiusMap;
+	overflow: hidden;
+  }
+
+
 .mapboxgl-ctrl-bottom-left {
 	display: none;
 }
@@ -298,15 +732,23 @@ div.map.mapboxgl-map {
 }
 
 
+.mapboxgl-canvas-container{
+	height: 100%;
+	width: 100%;
+}
+
+
+
 /* ------------------------------------------------------------------------------------------------ */
 /*                                          Tape                                           
 /* ------------------------------------------------------------------------------------------------ */
 
 .top-tape {
 	position: absolute;
-	height: 4vmin;
-	top: -5px;
-	width: 110%;
+	height: 3vmin;
+	top: -1vw;
+	left : 30%;
+	width: 40%;
 	background-color: $background-color_2;
 	opacity: 0.5;
 	background-blend-mode: multiply;
