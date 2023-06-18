@@ -1,12 +1,17 @@
 import PropTypes from "prop-types";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map3({ lat, lng, zoom, departure, arrival, isClicked }) {
+function Map3({ lat, lng, zoom, pitch, isChosen, rangeValue }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
+
+  const urlBase = "https://api.mapbox.com/isochrone/v1/mapbox/";
+  const [profile, setProfile] = useState("cycling");
+  const [isochrone, setIsochrone] = useState(null);
+  // const [location, setLocation] = useState(null);
 
   // ---------------------------------------- Add map----------------------------------------
   useEffect(() => {
@@ -23,35 +28,28 @@ function Map3({ lat, lng, zoom, departure, arrival, isClicked }) {
     });
   }, []);
 
-  // ---------------------------------------- Route----------------------------------------
+  // ---------------------------------------- FlyTo----------------------------------------
+
+  useEffect(() => {
+    if (isChosen) {
+      map.current.flyTo({
+        center: [lat, lng],
+        essential: true,
+        duration: 9000,
+        zoom: zoom,
+        pitch: pitch,
+      });
+      return;
+    }
+  }, [lat, lng]);
+
+  // ---------------------------------------- IsoChrone ----------------------------------------
 
   useEffect(() => {
     map.current.on("load", () => {
-      //  --------------create source route --------------
-      map.current.addSource("route", {
-        type: "geojson",
-        data: {
-          type: "FeatureCollection",
-          features: [],
-        },
-      });
-      map.current.addLayer({
-        id: "route",
-        type: "line",
-        source: "route",
-        layout: {
-          "line-join": "round",
-          "line-cap": "round",
-        },
-        paint: {
-          "line-color": "#cc6552",
-          "line-width": 5,
-          "line-opacity": 0.9,
-        },
-      });
+      // When the map loads, add the source and layer
 
-      //  --------------create source markers --------------
-      map.current.addSource("markers", {
+      map.current.addSource("iso", {
         type: "geojson",
         data: {
           type: "FeatureCollection",
@@ -59,79 +57,35 @@ function Map3({ lat, lng, zoom, departure, arrival, isClicked }) {
         },
       });
 
-      map.current.addLayer({
-        id: "markers",
-        type: "circle",
-        source: "markers",
-        paint: {
-          "circle-radius": 15,
-          "circle-color": "#cc6552",
-          "circle-opacity": 0.9,
+      map.current.addLayer(
+        {
+          id: "isoLayer",
+          type: "fill",
+          source: "iso",
+          layout: {},
+          paint: {
+            "fill-color": "#cc6552",
+            "fill-opacity": 0.3,
+          },
         },
-      });
-
-      map.current.moveLayer("markers", "country");
-    });
-
-    if (departure.isChosen && arrival.isChosen) {
-      // ------------------------------------ add marker ------------------------------------
-
-      map.current.getSource("markers").setData({
-        type: "FeatureCollection",
-        features: [
-          {
-            type: "Feature",
-            properties: {},
-            geometry: {
-              type: "Point",
-              coordinates: [departure.lat, departure.lng],
-            },
-          },
-          {
-            type: "Feature",
-            properties: {},
-            geometry: {
-              type: "Point",
-              coordinates: [arrival.lat, arrival.lng],
-            },
-          },
-        ],
-      });
-
-      // ------------------------------------ get route ------------------------------------
-
-      async function getRoute() {
-        await fetch(
-          `https://api.mapbox.com/directions/v5/mapbox/cycling/${departure.lat},${departure.lng};${arrival.lat},${arrival.lng}?geometries=geojson&overview=full&steps=true&access_token=pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsaThwNTFnYzFsd3ozZnBjczN3aDlhYzcifQ.na2-On5k8L1PUKU8Em_-Ew`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            map.current.getSource("route").setData({
-              type: "Feature",
-              properties: {},
-              geometry: {
-                type: "LineString",
-                coordinates: data.routes[0].geometry.coordinates,
-              },
-            });
-          })
-          .catch((err) => console.error(err));
-      }
-      getRoute();
-
-      // ------------------------------------ fit zoom to the bounds of the route ------------------------------------
-
-      map.current.fitBounds(
-        [
-          [departure.lat, departure.lng], // southwestern corner of the bounds
-          [arrival.lat, arrival.lng], // northeastern corner of the bounds
-        ],
-        { padding: 100 }
+        "poi-label"
       );
-
-      map.current.moveLayer("route", "country");
+      getIso();
+    });
+    async function getIso() {
+      await fetch(
+        `${urlBase}${profile}/${lat},${lng}?contours_minutes=${rangeValue}&polygons=true&access_token=${mapboxgl.accessToken}`,
+        { method: "GET" }
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          setIsochrone(data);
+          map.current.getSource("iso").setData(data);
+        })
+        .catch((err) => console.error(err));
     }
-  }, [departure, arrival]);
+    getIso();
+  }, [rangeValue, lat, lng]);
 
   // ---------------------------------------- RETURN----------------------------------------
 

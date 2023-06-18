@@ -110,14 +110,20 @@ h2 {
 h3 {
 	font-size: 1.25vw;
 	font-family: $font-family_1;
+	margin-bottom: 1%;
+}
+
+
+h4 {
+	font-size: 0.9vw;
+	font-family: $font-family_1;
+	margin-bottom: 1%;
 }
 
 .credits {
-	font-family: $font-family_1;
-	font-size: 1vw;
-	// padding-left: 5%;
-	text-align: center;
-	
+	font-family: $font-family_3;
+	font-size: 0.5vw;
+	text-align: center;	
 }
 
 
@@ -177,15 +183,15 @@ h3 {
 	box-shadow: $shadowStiked;
 }
 
-// ---------------------------------------------card1------------------------------------------------
+// ---------------------------------------------card3------------------------------------------------
 
-.card1Container{
+.card3Container{
 	transform: rotate(0deg);
 	position: relative;
 }
 
 
-.card1{
+.card3{
 	width: 40vw;
 	height: 90vh;
 	position: absolute;
@@ -208,16 +214,16 @@ h3 {
 	h3 {
 		text-align: center;
 		margin-top: 5%;
-		margin-bottom: 3%;
 	}
 
 	strong {
 		width: 93%;
-		height: 80%;
-		border: 4px solid #303030;
+		height: 90%;
+		border: 3px solid #303030;
 		border-style: double;
 		margin: auto auto;
 		overflow: hidden;
+		border-radius: $radiusMap;
 	}
 
 	p {
@@ -276,16 +282,16 @@ h3 {
 	h3 {
 		text-align: center;
 		margin-top: 5%;
-		margin-bottom: 3%;
 	}
 
 	strong {
 		width: 90%;
 		height: 80%;
-		border: 4px solid #303030;
+		border: 3px solid #303030;
 		border-style: double;
 		margin: auto auto;
 		overflow: hidden;
+		border-radius: $radiusMap;
 		
 	}
 
@@ -315,14 +321,14 @@ h3 {
 // }
 
 
-// ---------------------------------------------card3------------------------------------------------
+// ---------------------------------------------card1------------------------------------------------
 
-.card3Container{
+.card1Container{
 	transform: rotate(0deg);
 	position: relative;
 }
 
-.card3 {
+.card1 {
 	position: absolute;
 	top: 26vh;
 	left: 3vw;
@@ -345,16 +351,16 @@ h3 {
 	h3 {
 		text-align: center;
 		margin-top: 5%;
-		margin-bottom: 3%;
 	}
 
 	strong {
-		border: 4px solid #303030;
+		border:3px solid #303030;
 		border-style: double;
 		width: 90%;
 		height: 85%;
 		margin: auto auto;
 		overflow: hidden;
+		border-radius: $radiusMap;
 	}
 
 	p {
@@ -727,7 +733,7 @@ h3 {
 }
 
 div.map.mapboxgl-map {
-	height: 100%;
+	height: 110%;
 	width: 100%;
 }
 

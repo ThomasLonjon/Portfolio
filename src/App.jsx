@@ -11,10 +11,10 @@ function App() {
   // -------------------------------------------UseStates-----------------------------------------
 
   const [position1, setPosition1] = useState({
-    mapNumber: 1,
-    lat: -0.1,
-    lng: 47,
-    zoom: 5.1,
+    mapNumber: 3,
+    lat: 9.12,
+    lng: 42.1,
+    zoom: 6.55,
     pitch: 0,
     isChosen: false,
   });
@@ -29,10 +29,10 @@ function App() {
   });
 
   const [position3, setPosition3] = useState({
-    mapNumber: 3,
-    lat: 9.12,
-    lng: 42.21,
-    zoom: 6.9,
+    mapNumber: 1,
+    lat: -0.1,
+    lng: 47,
+    zoom: 5.1,
     pitch: 0,
     isChosen: false,
   });
@@ -87,7 +87,6 @@ function App() {
       lat: result.center[0],
       lng: result.center[1],
     });
-    // setIsClicked({ ...isClicked, third: true });
   };
   // -----------------------------------Handlechange Set Map Position -----------------------------------------
 
@@ -102,9 +101,9 @@ function App() {
     });
   };
 
-  const handleChange2 = (a, b) => {
-    setPosition2({
-      ...position2,
+  const handleChange3 = (a, b) => {
+    setPosition3({
+      ...position3,
       lat: a,
       lng: b,
       isChosen: true,
@@ -117,7 +116,7 @@ function App() {
 
   const geocoder = new MapboxGeocoder({
     accessToken: mapboxgl.accessToken,
-    types: "country,region,place,postcode,locality,neighborhood,address",
+    types: "place,postcode,locality,neighborhood,address",
   });
 
   useEffect(() => {
@@ -136,7 +135,7 @@ function App() {
       handleChange1(positionGeoCoder.lat, positionGeoCoder.lng);
     }
     if (isClicked.second) {
-      handleChange2(positionGeoCoder.lat, positionGeoCoder.lng);
+      handleChange3(positionGeoCoder.lat, positionGeoCoder.lng);
     }
   }, [positionGeoCoder.lat, positionGeoCoder.lng]);
 
@@ -153,9 +152,32 @@ function App() {
       <div className="card1Container" onMouseDown={() => handleIndex("card1")} style={{ zIndex: `${zIndex["card1"]}` }}>
         <Draggable cancel="strong">
           <div className="card1">
-            <h3>EXPLOREZ DE NOUVELLES EXPERIENCES CARTOGRAPHIQUES</h3>
-            <Map1 {...position1} rangeValue={rangeValue} />
-            <p className="credits">CARTE 1</p>
+            <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
+            <h4 className="subtitle">DÉPART</h4>
+            <Map1 {...position1} />
+            <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
+          </div>
+        </Draggable>
+      </div>
+
+      <div className="card2Container" onMouseDown={() => handleIndex("card2")} style={{ zIndex: `${zIndex["card2"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card2">
+            <h3>JOUEZ AVEC L&apos;ÉCHELLE</h3>
+            <h4 className="subtitle">ITINÉRAIRE</h4>
+            <Map2 {...position2} departure={position1} arrival={position3} isClicked={isClicked} />
+            <p className="credits">Mapbox, Openstreetmap, Opentripmap</p>
+          </div>
+        </Draggable>
+      </div>
+
+      <div className="card3Container" onMouseDown={() => handleIndex("card3")} style={{ zIndex: `${zIndex["card3"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card3">
+            <h3>EXPLOREZ DE NOUVELLES EXPÉRIENCES CARTOGRAPHIQUES</h3>
+            <h4 className="subtitle">DESTINATION</h4>
+            <Map3 {...position3} rangeValue={rangeValue} />
+            <p className="credits">Mapbox, OpenstreetMap, Opentripmap</p>
             <div>
               <Slider
                 maxRange={61}
@@ -169,28 +191,6 @@ function App() {
         </Draggable>
       </div>
 
-      <div className="card2Container" onMouseDown={() => handleIndex("card2")} style={{ zIndex: `${zIndex["card2"]}` }}>
-        <Draggable cancel="strong">
-          <div className="card2">
-            <h3>JOUEZ AVEC L&apos;ÉCHELLE</h3>
-            <Map2 {...position2} />
-            <p className="credits">CARTE 2</p>
-          </div>
-        </Draggable>
-      </div>
-
-      <div className="card3Container" onMouseDown={() => handleIndex("card3")} style={{ zIndex: `${zIndex["card3"]}` }}>
-        <Draggable cancel="strong">
-          <div className="card3">
-            <div className="cursor">
-              <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
-            </div>
-            <Map3 {...position3} departure={position1} arrival={position2} isClicked={isClicked} />
-            <p className="credits">CARTE 3</p>
-          </div>
-        </Draggable>
-      </div>
-
       <div className="card4Container" onMouseDown={() => handleIndex("card4")} style={{ zIndex: `${zIndex["card4"]}` }}>
         <Draggable cancel="strong">
           <div className={`card4 ${isClicked.first || isClicked.second ? "card4Tall" : "card4Small"}`}>
@@ -198,10 +198,10 @@ function App() {
               <h3>CHOISISSEZ VOTRE CARTE</h3>
               <div className="buttonContainer">
                 <strong className={isClicked.first ? "clickedButton" : "button"} onClick={handleClick1}>
-                  Carte 1
+                  DÉPART
                 </strong>
                 <strong className={isClicked.second ? "clickedButton" : "button"} onClick={handleClick2}>
-                  Carte 2
+                  DESTINATION
                 </strong>
               </div>
             </div>

@@ -4,9 +4,10 @@ import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map2({ lat, lng, zoom, pitch, isChosen }) {
+function Map2({ lat, lng, zoom, departure, arrival, isClicked }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
+
   // ---------------------------------------- Add map----------------------------------------
   useEffect(() => {
     if (map.current) {
@@ -22,20 +23,116 @@ function Map2({ lat, lng, zoom, pitch, isChosen }) {
     });
   }, []);
 
-  // ---------------------------------------- FlyTo----------------------------------------
+  // ---------------------------------------- Route----------------------------------------
 
   useEffect(() => {
-    if (isChosen) {
-      map.current.flyTo({
-        center: [lat, lng],
-        essential: true,
-        duration: 9000,
-        zoom: zoom,
-        pitch: pitch,
+    map.current.on("load", () => {
+      //  --------------create source route --------------
+      map.current.addSource("route", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
       });
-      return;
+      map.current.addLayer({
+        id: "route",
+        type: "line",
+        source: "route",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+        },
+        paint: {
+          "line-color": "#cc6552",
+          "line-width": 5,
+          "line-opacity": 0.9,
+        },
+      });
+
+      //  --------------create source markers --------------
+      map.current.addSource("markers", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+
+      map.current.addLayer({
+        id: "markers",
+        type: "circle",
+        source: "markers",
+        paint: {
+          "circle-radius": 15,
+          "circle-color": "#cc6552",
+          "circle-opacity": 0.9,
+        },
+      });
+
+      map.current.moveLayer("markers", "country");
+    });
+
+    async function getRoute() {
+      await fetch(
+        `https://api.mapbox.com/directions/v5/mapbox/driving/${departure.lat},${departure.lng};${arrival.lat},${arrival.lng}?geometries=geojson&overview=full&steps=true&access_token=pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsaThwNTFnYzFsd3ozZnBjczN3aDlhYzcifQ.na2-On5k8L1PUKU8Em_-Ew`
+      )
+        .then((response) => response.json())
+        .then((data) => {
+          map.current.getSource("route").setData({
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "LineString",
+              coordinates: data.routes[0].geometry.coordinates,
+            },
+          });
+        })
+        .catch((err) => console.error(err));
     }
-  }, [lat, lng]);
+
+    if (departure.isChosen && arrival.isChosen) {
+      // ------------------------------------ add marker ------------------------------------
+
+      map.current.getSource("markers").setData({
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Point",
+              coordinates: [departure.lat, departure.lng],
+            },
+          },
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Point",
+              coordinates: [arrival.lat, arrival.lng],
+            },
+          },
+        ],
+      });
+
+      // ------------------------------------ get route ------------------------------------
+
+      getRoute();
+
+      // ------------------------------------ fit zoom to the bounds of the route ------------------------------------
+
+      map.current.fitBounds(
+        [
+          [departure.lat, departure.lng],
+          [arrival.lat, arrival.lng],
+        ],
+        { padding: 120 }
+      );
+
+      // map.current.moveLayer("route", "country");
+    }
+  }, [departure, arrival]);
 
   // ---------------------------------------- RETURN----------------------------------------
 
