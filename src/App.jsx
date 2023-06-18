@@ -5,13 +5,12 @@ import Map2 from "./components/Map2";
 import Map3 from "./components/Map3";
 import Slider from "./components/Slider";
 import "./App.scss";
-import mapboxgl from "mapbox-gl";
+import { mapboxgl, MapboxGeocoder } from "mapbox-gl";
 
 function App() {
   // -------------------------------------------UseStates-----------------------------------------
 
   const [position1, setPosition1] = useState({
-    mapNumber: 3,
     lat: 9.12,
     lng: 42.1,
     zoom: 6.55,
@@ -19,8 +18,8 @@ function App() {
     isChosen: false,
   });
 
+  // eslint-disable-next-line no-unused-vars
   const [position2, setPosition2] = useState({
-    mapNumber: 2,
     lat: 5.492516199502727,
     lng: 43.21716380376564,
     zoom: 7.2,
@@ -29,7 +28,6 @@ function App() {
   });
 
   const [position3, setPosition3] = useState({
-    mapNumber: 1,
     lat: -0.1,
     lng: 47,
     zoom: 5.1,
@@ -42,10 +40,9 @@ function App() {
     lng: 47,
   });
 
-  const [isClicked, setIsClicked] = useState({
-    first: false,
-    second: false,
-    third: false,
+  const [buttonIsClicked, setButtonIsClicked] = useState({
+    firstButton: false,
+    secondButton: false,
   });
 
   const [rangeValue, setRangeValue] = useState(10);
@@ -73,11 +70,11 @@ function App() {
   // ---------------------------------------------HandleClick Button-----------------------------------------
 
   const handleClick1 = () => {
-    setIsClicked({ ...isClicked, first: true, second: false });
+    setButtonIsClicked({ ...buttonIsClicked, firstButton: true, secondButton: false });
   };
 
   const handleClick2 = () => {
-    setIsClicked({ ...isClicked, first: false, second: true });
+    setButtonIsClicked({ ...buttonIsClicked, firstButton: false, secondButton: true });
   };
 
   // ----------------------------------------Handlechange Geocoder Input-----------------------------------------
@@ -96,8 +93,8 @@ function App() {
       lat: a,
       lng: b,
       isChosen: true,
-      zoom: 12,
-      pitch: 0,
+      zoom: 15.5,
+      pitch: 15,
     });
   };
 
@@ -107,8 +104,8 @@ function App() {
       lat: a,
       lng: b,
       isChosen: true,
-      zoom: 15.1,
-      pitch: 50,
+      zoom: 12,
+      pitch: 0,
     });
   };
 
@@ -121,6 +118,7 @@ function App() {
 
   useEffect(() => {
     geocoder.addTo("#geocoder");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -131,12 +129,13 @@ function App() {
   });
 
   useEffect(() => {
-    if (isClicked.first) {
+    if (buttonIsClicked.firstButton) {
       handleChange1(positionGeoCoder.lat, positionGeoCoder.lng);
     }
-    if (isClicked.second) {
+    if (buttonIsClicked.secondButton) {
       handleChange3(positionGeoCoder.lat, positionGeoCoder.lng);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [positionGeoCoder.lat, positionGeoCoder.lng]);
 
   // ---------------------------------------------Return---------------------------------------------
@@ -154,7 +153,7 @@ function App() {
           <div className="card1">
             <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
             <h4 className="subtitle">DÉPART</h4>
-            <Map1 {...position1} />
+            <Map1 {...position1} departure={position1} arrival={position3} />
             <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
           </div>
         </Draggable>
@@ -165,7 +164,7 @@ function App() {
           <div className="card2">
             <h3>JOUEZ AVEC L&apos;ÉCHELLE</h3>
             <h4 className="subtitle">ITINÉRAIRE</h4>
-            <Map2 {...position2} departure={position1} arrival={position3} isClicked={isClicked} />
+            <Map2 {...position2} departure={position1} arrival={position3} buttonIsClicked={buttonIsClicked} />
             <p className="credits">Mapbox, Openstreetmap, Opentripmap</p>
           </div>
         </Draggable>
@@ -176,7 +175,7 @@ function App() {
           <div className="card3">
             <h3>EXPLOREZ DE NOUVELLES EXPÉRIENCES CARTOGRAPHIQUES</h3>
             <h4 className="subtitle">DESTINATION</h4>
-            <Map3 {...position3} rangeValue={rangeValue} />
+            <Map3 {...position3} rangeValue={rangeValue} departure={position1} arrival={position3} />
             <p className="credits">Mapbox, OpenstreetMap, Opentripmap</p>
             <div>
               <Slider
@@ -193,20 +192,28 @@ function App() {
 
       <div className="card4Container" onMouseDown={() => handleIndex("card4")} style={{ zIndex: `${zIndex["card4"]}` }}>
         <Draggable cancel="strong">
-          <div className={`card4 ${isClicked.first || isClicked.second ? "card4Tall" : "card4Small"}`}>
+          <div
+            className={`card4 ${
+              buttonIsClicked.firstButton || buttonIsClicked.secondButton ? "card4Tall" : "card4Small"
+            }`}
+          >
             <div className="firstPart">
               <h3>CHOISISSEZ VOTRE CARTE</h3>
               <div className="buttonContainer">
-                <strong className={isClicked.first ? "clickedButton" : "button"} onClick={handleClick1}>
+                <strong className={buttonIsClicked.firstButton ? "clickedButton" : "button"} onClick={handleClick1}>
                   DÉPART
                 </strong>
-                <strong className={isClicked.second ? "clickedButton" : "button"} onClick={handleClick2}>
+                <strong className={buttonIsClicked.secondButton ? "clickedButton" : "button"} onClick={handleClick2}>
                   DESTINATION
                 </strong>
               </div>
             </div>
-            <div className={isClicked.first || isClicked.second ? "secondPart" : "secondPartHidden"}>
-              <h3>TROUVEZ VOTRE DESTINATION</h3>
+            <div
+              className={
+                buttonIsClicked.firstButton || buttonIsClicked.secondButton ? "secondPart" : "secondPartHidden"
+              }
+            >
+              <h3> {buttonIsClicked.firstButton ? "DÉFINISSEZ VOTRE DÉPART" : "TROUVEZ VOTRE DESTINATION"}</h3>
               <strong className="no-cursor">
                 <div id="geocoder"></div>
               </strong>
@@ -226,8 +233,8 @@ function App() {
         <p>
           Looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the
           cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
-          1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in
-          45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of
+          1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45
+          BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of
           Lorem Ipsum
         </p>
       </div>

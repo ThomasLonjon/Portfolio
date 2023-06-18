@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map1({ lat, lng, zoom, pitch, isChosen }) {
+function Map1({ lat, lng, zoom, pitch, isChosen, departure, arrival }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
   // ---------------------------------------- Add map----------------------------------------
@@ -20,6 +20,7 @@ function Map1({ lat, lng, zoom, pitch, isChosen }) {
       zoom: zoom,
       antialias: true,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ---------------------------------------- FlyTo----------------------------------------
@@ -35,7 +36,108 @@ function Map1({ lat, lng, zoom, pitch, isChosen }) {
       });
       return;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [lat, lng]);
+
+  // ---------------------------------------- Route----------------------------------------
+
+  useEffect(() => {
+    map.current.on("load", () => {
+      //  --------------create source route --------------
+      map.current.addSource("route", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+      map.current.addLayer({
+        id: "route",
+        type: "line",
+        source: "route",
+        layout: {
+          "line-join": "round",
+          "line-cap": "round",
+        },
+        paint: {
+          "line-color": "#cc6552",
+          "line-width": 5,
+          "line-opacity": 0.9,
+        },
+      });
+
+      //  --------------create source markers --------------
+      map.current.addSource("markers", {
+        type: "geojson",
+        data: {
+          type: "FeatureCollection",
+          features: [],
+        },
+      });
+
+      map.current.addLayer({
+        id: "markers",
+        type: "circle",
+        source: "markers",
+        paint: {
+          "circle-radius": 15,
+          "circle-color": "#cc6552",
+          "circle-opacity": 0.9,
+        },
+      });
+
+      // map.current.moveLayer("markers", "country");
+    });
+
+    async function getRoute() {
+      try {
+        const response = await fetch(
+          `https://api.mapbox.com/directions/v5/mapbox/driving/${departure.lat},${departure.lng};${arrival.lat},${arrival.lng}?geometries=geojson&overview=full&steps=true&access_token=pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsaThwNTFnYzFsd3ozZnBjczN3aDlhYzcifQ.na2-On5k8L1PUKU8Em_-Ew`
+        );
+        const data = await response.json();
+        map.current.getSource("route").setData({
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "LineString",
+            coordinates: data.routes[0].geometry.coordinates,
+          },
+        });
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    if (departure.isChosen && arrival.isChosen) {
+      // ------------------------------------ add marker ------------------------------------
+
+      map.current.getSource("markers").setData({
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Point",
+              coordinates: [departure.lat, departure.lng],
+            },
+          },
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Point",
+              coordinates: [arrival.lat, arrival.lng],
+            },
+          },
+        ],
+      });
+
+      // ------------------------------------ get route ------------------------------------
+
+      getRoute();
+    }
+  }, [departure, arrival]);
 
   // ---------------------------------------- RETURN----------------------------------------
 
@@ -54,4 +156,18 @@ Map1.propTypes = {
   pitch: PropTypes.number.isRequired,
   zoom: PropTypes.number.isRequired,
   isChosen: PropTypes.bool.isRequired,
+  arrival: PropTypes.shape({
+    lng: PropTypes.number.isRequired,
+    lat: PropTypes.number.isRequired,
+    pitch: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired,
+    isChosen: PropTypes.bool.isRequired,
+  }).isRequired,
+  departure: PropTypes.shape({
+    lng: PropTypes.number.isRequired,
+    lat: PropTypes.number.isRequired,
+    pitch: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired,
+    isChosen: PropTypes.bool.isRequired,
+  }).isRequired,
 };

@@ -136,7 +136,9 @@ h4 {
 	margin-left : auto;
 	margin-right : auto;
 	min-width: 100%;
+	min-height: 100%;
 }
+
 
 .mapboxgl-ctrl-geocoder--icon{
 	display: none;
@@ -149,9 +151,9 @@ h4 {
 }
 
 
-.mapboxgl-ctrl-geocoder.mapboxgl-ctrl{
-	// box-shadow: none;
-}
+// .mapboxgl-ctrl-geocoder.mapboxgl-ctrl{
+// 	box-shadow: none;
+// }
 
 
 .mapboxgl-ctrl-geocoder input[type='text']::selection{
@@ -182,6 +184,116 @@ h4 {
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
 }
+
+// ---------------------------------------------card1------------------------------------------------
+
+.card1Container{
+	transform: rotate(0deg);
+	position: relative;
+}
+
+.card1 {
+	position: absolute;
+	top: 20vh;
+	left: 2vw;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: column;
+	width: 30vw;
+	height: 70vh;
+	background-color: $background-color_1;
+	box-shadow: $shadow;
+	border-radius: $radius;
+
+	background-image: url(../src/assets/img/paper2.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+
+	h3 {
+		text-align: center;
+		margin-top: 5%;
+	}
+
+	strong {
+		border:3px solid #303030;
+		border-style: double;
+		width: 90%;
+		height: 85%;
+		margin: auto auto;
+		overflow: hidden;
+		border-radius: $radiusMap;
+	}
+
+	p {
+		padding-top: 1%;
+		padding-bottom: 2%;
+	}
+}
+
+
+
+
+
+
+
+// ---------------------------------------------card2------------------------------------------------
+
+.card2Container{
+	transform: rotate(-2deg);
+	position: relative;
+}
+
+
+.card2 {
+	position: absolute;
+	top: 46vh;
+	left: 20vw;
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: column;
+	width: 25vw;
+	height: 40vh;
+	background-color: $background-color_1;
+	box-shadow: $shadow;
+	border-radius: $radius;
+
+
+	background-image: url(../src/assets/img/paper2.png);
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: cover;
+
+
+	h3 {
+		text-align: center;
+		margin-top: 5%;
+	}
+
+	strong {
+		width: 90%;
+		height: 80%;
+		border: 3px solid #303030;
+		border-style: double;
+		margin: auto auto;
+		overflow: hidden;
+		border-radius: $radiusMap;
+		
+	}
+
+	p {
+		padding-top: 1%;
+		padding-bottom: 2%;
+	}
+
+
+}
+
+
+
 
 // ---------------------------------------------card3------------------------------------------------
 
@@ -232,142 +344,7 @@ h4 {
 	}
 }
 
-// .card1::before{
-// 	content: "";
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 100%;
-// 	background-image: url(../src/assets/img/paper1.png);
-// 	background-repeat: no-repeat;
-// 	background-position: center;
-// 	background-size: cover;
-// 	mix-blend-mode: multiply;
-// 	pointer-events: none;
 
-// }
-
-
-
-// ---------------------------------------------card2------------------------------------------------
-
-.card2Container{
-	transform: rotate(-2deg);
-	position: relative;
-}
-
-
-.card2 {
-	position: absolute;
-	top: 46vh;
-	left: 20vw;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-	width: 30vw;
-	height: 50vh;
-	background-color: $background-color_1;
-	box-shadow: $shadow;
-	border-radius: $radius;
-
-
-	background-image: url(../src/assets/img/paper2.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-
-	h3 {
-		text-align: center;
-		margin-top: 5%;
-	}
-
-	strong {
-		width: 90%;
-		height: 80%;
-		border: 3px solid #303030;
-		border-style: double;
-		margin: auto auto;
-		overflow: hidden;
-		border-radius: $radiusMap;
-		
-	}
-
-	p {
-		padding-top: 1%;
-		padding-bottom: 2%;
-	}
-
-
-}
-
-
-// .card2::before{
-// 	content: "";
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 100%;
-// 	background-image: url(../src/assets/img/paper2.png);
-// 	background-repeat: no-repeat;
-// 	background-position: center;
-// 	background-size: cover;
-// 	mix-blend-mode: multiply;
-// 	pointer-events: none;
-
-// }
-
-
-// ---------------------------------------------card1------------------------------------------------
-
-.card1Container{
-	transform: rotate(0deg);
-	position: relative;
-}
-
-.card1 {
-	position: absolute;
-	top: 26vh;
-	left: 3vw;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-	width: 27vw;
-	height: 60vh;
-	background-color: $background-color_1;
-	box-shadow: $shadow;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper2.png);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-
-	h3 {
-		text-align: center;
-		margin-top: 5%;
-	}
-
-	strong {
-		border:3px solid #303030;
-		border-style: double;
-		width: 90%;
-		height: 85%;
-		margin: auto auto;
-		overflow: hidden;
-		border-radius: $radiusMap;
-	}
-
-	p {
-		padding-top: 1%;
-		padding-bottom: 2%;
-	}
-}
 
 
 // ---------------------------------------------card4------------------------------------------------
@@ -421,30 +398,13 @@ h4 {
 }
 
 .card4Small{
-	height: 13vh;
+	height: 11vh;
 }
 
 .card4Tall{
-	height: 23vh;
+	height: 20vh;
 }
 
-
-// .card4::before{
-// 	content: "";
-// 	position: absolute;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 100%;
-// 	background-image: url(../src/assets/img/paper2.png);
-// 	background-repeat: no-repeat;
-// 	background-position: center;
-// 	background-size: cover;
-// 	mix-blend-mode: multiply;
-// 	pointer-events: none;
-// 	opacity: 50%;
-
-// }
 
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -629,7 +589,7 @@ h4 {
 	width: 48%;
 	padding: 0.5vw;
 	background-color: #cccab9;
-	font-size: 1vw;
+	font-size: .75vw;
 }
 
 .clickedButton{
@@ -637,7 +597,7 @@ h4 {
 	width: 48%;
 	padding: 0.5vw;
 	background-color: #a09d89;
-	font-size: 1vw;
+	font-size: .75vw;
 }
 
 

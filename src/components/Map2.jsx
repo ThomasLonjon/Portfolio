@@ -4,7 +4,7 @@ import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
 
-function Map2({ lat, lng, zoom, departure, arrival, isClicked }) {
+function Map2({ lat, lng, zoom, departure, arrival }) {
   const mapContainer = useRef(null);
   const map = useRef(null);
 
@@ -21,6 +21,7 @@ function Map2({ lat, lng, zoom, departure, arrival, isClicked }) {
       zoom: zoom,
       antialias: true,
     });
+       // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   // ---------------------------------------- Route----------------------------------------
@@ -70,25 +71,26 @@ function Map2({ lat, lng, zoom, departure, arrival, isClicked }) {
         },
       });
 
-      map.current.moveLayer("markers", "country");
+      // map.current.moveLayer("markers", "country");
     });
 
     async function getRoute() {
-      await fetch(
-        `https://api.mapbox.com/directions/v5/mapbox/driving/${departure.lat},${departure.lng};${arrival.lat},${arrival.lng}?geometries=geojson&overview=full&steps=true&access_token=pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsaThwNTFnYzFsd3ozZnBjczN3aDlhYzcifQ.na2-On5k8L1PUKU8Em_-Ew`
-      )
-        .then((response) => response.json())
-        .then((data) => {
-          map.current.getSource("route").setData({
-            type: "Feature",
-            properties: {},
-            geometry: {
-              type: "LineString",
-              coordinates: data.routes[0].geometry.coordinates,
-            },
-          });
-        })
-        .catch((err) => console.error(err));
+      try {
+        const response = await fetch(
+          `https://api.mapbox.com/directions/v5/mapbox/driving/${departure.lat},${departure.lng};${arrival.lat},${arrival.lng}?geometries=geojson&overview=full&steps=true&access_token=pk.eyJ1IjoidGhvbWFzbG9uam9uIiwiYSI6ImNsaThwNTFnYzFsd3ozZnBjczN3aDlhYzcifQ.na2-On5k8L1PUKU8Em_-Ew`
+        );
+        const data = await response.json();
+        map.current.getSource("route").setData({
+          type: "Feature",
+          properties: {},
+          geometry: {
+            type: "LineString",
+            coordinates: data.routes[0].geometry.coordinates,
+          },
+        });
+      } catch (err) {
+        console.error(err);
+      }
     }
 
     if (departure.isChosen && arrival.isChosen) {
@@ -151,4 +153,18 @@ Map2.propTypes = {
   pitch: PropTypes.number.isRequired,
   zoom: PropTypes.number.isRequired,
   isChosen: PropTypes.bool.isRequired,
+  arrival: PropTypes.shape({
+    lng: PropTypes.number.isRequired,
+    lat: PropTypes.number.isRequired,
+    pitch: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired,
+    isChosen: PropTypes.bool.isRequired,
+  }).isRequired,
+  departure: PropTypes.shape({
+    lng: PropTypes.number.isRequired,
+    lat: PropTypes.number.isRequired,
+    pitch: PropTypes.number.isRequired,
+    zoom: PropTypes.number.isRequired,
+    isChosen: PropTypes.bool.isRequired,
+  }).isRequired,
 };
