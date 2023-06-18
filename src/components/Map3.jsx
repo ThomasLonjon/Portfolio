@@ -187,7 +187,30 @@ function Map3({ lat, lng, zoom, pitch, isChosen, rangeValue, arrival, departure 
     }
   }, [departure, arrival]);
 
-  // ---------------------------------------- RETURN----------------------------------------
+  /* ------------------------------------------------------------------------------------------------ */
+  /*                                         OpenTripMap                                            
+/* ------------------------------------------------------------------------------------------------ */
+
+  useEffect(() => {
+    async function getOTM() {
+      try {
+        const response = await fetch(
+          `https://api.opentripmap.com/0.1/en/places/radius?radius=5000&lon=${arrival.lat}&lat=${arrival.lng}&kinds=interesting_places&format=json&apikey=5ae2e3f221c38a28845f05b63e84a3f12939805f99c1181877339c23`,
+          { method: "GET" }
+        );
+        const data = await response.json();
+        console.log(data);
+      } catch (err) {
+        console.error(err);
+      }
+    }
+
+    getOTM();
+  }, [arrival]);
+
+  /* ------------------------------------------------------------------------------------------------ */
+  /*                                        RETURN                                            
+/* ------------------------------------------------------------------------------------------------ */
 
   return (
     <strong className="no-cursor">
