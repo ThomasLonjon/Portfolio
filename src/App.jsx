@@ -5,7 +5,8 @@ import Map2 from "./components/Map2";
 import Map3 from "./components/Map3";
 import Slider from "./components/Slider";
 import "./App.scss";
-import { mapboxgl, MapboxGeocoder } from "mapbox-gl";
+import mapboxgl from "mapbox-gl";
+import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 
 function App() {
   // -------------------------------------------UseStates-----------------------------------------
@@ -162,7 +163,7 @@ function App() {
       <div className="card2Container" onMouseDown={() => handleIndex("card2")} style={{ zIndex: `${zIndex["card2"]}` }}>
         <Draggable cancel="strong">
           <div className="card2">
-            <h3>JOUEZ AVEC L&apos;ÉCHELLE</h3>
+            <h3>GARDEZ LA VISION D&apos;ENSEMBLE</h3>
             <h4 className="subtitle">ITINÉRAIRE</h4>
             <Map2 {...position2} departure={position1} arrival={position3} buttonIsClicked={buttonIsClicked} />
             <p className="credits">Mapbox, Openstreetmap, Opentripmap</p>
@@ -177,9 +178,9 @@ function App() {
             <h4 className="subtitle">DESTINATION</h4>
             <Map3 {...position3} rangeValue={rangeValue} departure={position1} arrival={position3} />
             <p className="credits">Mapbox, OpenstreetMap, Opentripmap</p>
-            <div>
+            <div className={position1.isChosen && position3.isChosen ? "" : "sliderContainerHidden"}>
               <Slider
-                maxRange={61}
+                maxRange={60}
                 defaultRange={10}
                 unit="minutes à vélo"
                 rangeValue={rangeValue}
@@ -222,6 +223,15 @@ function App() {
         </Draggable>
       </div>
 
+      <div className="arrowCardContainer">
+        <Draggable>
+          <div className="arrowCard">
+            <p>CONTINUEZ LA VISITE</p>
+            <h4>⌄</h4>
+          </div>
+        </Draggable>
+      </div>
+
       <div className="AboutMe">
         <div className="tape-section"></div>
         <h1>À PROPOS</h1>
@@ -254,23 +264,29 @@ function App() {
         <h1>MES PROJETS</h1>
       </div>
 
-      <Draggable cancel="strong">
-        <div className="cardProject1">
-          <h3>HACKATON - HOLIMAP FOR HOLIDAYS</h3>
-        </div>
-      </Draggable>
+      <div className="cardProject1Container">
+        <Draggable cancel="strong">
+          <div className="cardProject1">
+            <h3>HOLIMAP FOR HOLIDAYS</h3>
+          </div>
+        </Draggable>
+      </div>
 
-      <Draggable cancel="strong">
-        <div className="cardProject2">
-          <h3>THE MARIO PROJECT</h3>
-        </div>
-      </Draggable>
+      <div className="cardProject2Container">
+        <Draggable cancel="strong">
+          <div className="cardProject2">
+            <h3>THE MARIO PROJECT</h3>
+          </div>
+        </Draggable>
+      </div>
 
-      <Draggable cancel="strong">
-        <div className="cardProject3">
-          <h3>GUESS WHERE</h3>
-        </div>
-      </Draggable>
+      <div className="cardProject3Container">
+        <Draggable cancel="strong">
+          <div className="cardProject3">
+            <h3>GUESS WHERE</h3>
+          </div>
+        </Draggable>
+      </div>
     </div>
   );
 }
