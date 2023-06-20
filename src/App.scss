@@ -8,7 +8,7 @@ $shadow : 0px 5px 5px rgba(0, 0, 0, 10), 0px 2px 10px rgba(0, 0, 0, 10), rgb(38,
 // $shadow : rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 // $shadow : rgb(38, 57, 77) 0px 20px 30px -10px;
 $shadowStiked : 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5);
-$radius : 0vw;
+$radius : 1vw;
 $radiusMap : 1.2vw;
 
 
@@ -406,6 +406,7 @@ h4 {
 	height: 2.5vw;
 	background-color: $background-color_1;
 	box-shadow: $shadow;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper2.jpg);
 	background-repeat: no-repeat;
@@ -483,6 +484,7 @@ h4 {
 	height: 30vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper2.jpg);
 	background-repeat: no-repeat;
@@ -514,6 +516,7 @@ h4 {
 	height: 35vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper4bis.jpg);
 	background-repeat: no-repeat;
@@ -548,6 +551,7 @@ h4 {
 	height: 17vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper1bis.jpg);
 	background-repeat: no-repeat;
@@ -576,6 +580,7 @@ h4 {
 	height: 7vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper1.jpg);
 	background-repeat: no-repeat;
@@ -617,6 +622,7 @@ h4 {
 	height: 35vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper1bis.jpg);
 	background-repeat: no-repeat;
@@ -642,6 +648,7 @@ h4 {
 	height: 35vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper5.jpg);
 	background-repeat: no-repeat;
@@ -668,6 +675,7 @@ h4 {
 	height: 35vh;
 	background-color: $background-color_1;
 	box-shadow: $shadowStiked;
+	border-radius: $radius;
 
 	background-image: url(../src/assets/img/paper1.jpg);
 	background-repeat: no-repeat;
