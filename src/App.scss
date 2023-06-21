@@ -12,42 +12,6 @@ $radius : 1vw;
 $radiusMap : 1.2vw;
 
 
-
-// /* ----------- ADDING NOISE EFFECT TO WHOLE PAGE---------------*/
-
-// body::after {
-// 	content: "";
-// 	position: fixed;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 100%;
-// 	opacity: 0.1;
-// 	pointer-events: none;
-// 	background-repeat: repeat;
-// 	animation-name: noise;
-// 	animation-duration: 0.5s;
-// 	animation-iteration-count: infinite;
-// 	animation-timing-function: steps(3);
-//   }
-  
-//   @keyframes noise {
-// 	from {
-// 	  background-image: url("../src/assets/img/Noise1.jpg");
-// 	}
-// 	33% {
-// 	  background-image: url("../src/assets/img/Noise2.jpg");
-// 	}
-// 	66% {
-// 	  background-image: url("../src/assets/img/Noise3.jpg");
-// 	}
-// 	to {
-// 	  background-image: url("../src/assets/img/Noise1.jpg");
-// 	}
-//   }
-
-
-
 /* ------------------------------------------------------------------------------------------------ */
 /*                                             Fonts                                                
 /* ------------------------------------------------------------------------------------------------ */
@@ -532,7 +496,48 @@ h4 {
 	font-size: 1vw;	
 	margin-top: 1vw;
 	}
+
+	span{
+		font-size: .75vw;
+	}
 }
+
+
+
+
+.devSkillsContainer{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+}
+
+.urbaSkillsContainer{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+	align-items: center;
+	width: 100%;
+}
+
+.skillButton{
+	background-color: #d8d6c3;
+	mix-blend-mode: multiply;
+	margin-right: 1%;
+	margin-bottom: 1%;
+	padding: 1%;
+	border-radius: 1vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	
+	img{width: 3vw};
+}
+
+
+
+
 
 
 // ---------------------------------------------Contact me------------------------------------------------

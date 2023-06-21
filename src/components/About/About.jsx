@@ -1,23 +1,39 @@
-import Skill from "./Skill";
+import html from "../../assets/img/html5.svg";
+import css from "../../assets/img/css3.svg";
+import javascript from "../../assets/img/js.svg";
+import react from "../../assets/img/reactjs.svg";
+import node from "../../assets/img/nodejs.svg";
+import mysql from "../../assets/img/mysql.svg";
+import github from "../../assets/img/gitlab.svg";
+import figma from "../../assets/img/figma.svg";
+import qgis from "../../assets/img/qgis.svg";
+import mapbox from "../../assets/img/mapbox.svg";
+import autocad from "../../assets/img/autocad.svg";
+import sketchup from "../../assets/img/sketchup.svg";
+import photoshop from "../../assets/img/ps.svg";
+import indesign from "../../assets/img/id.svg";
+import illustator from "../../assets/img/ai.svg";
 
 function About() {
-  const skills = [
-    { name: "HTML" },
-    { name: "CSS" },
-    { name: "JavaScript" },
-    { name: "React" },
-    { name: "Node.js" },
-    { name: "Express" },
-    { name: "MySQL" },
-    { name: "Sass" },
-    { name: "Git / GitHub" },
-    { name: "Figma" },
-    { name: "Qgis" },
-    { name: "Autocad" },
-    { name: "Sketchup" },
-    { name: "Photoshop" },
-    { name: "Indesign" },
-    { name: "Illustrator" },
+  const devSkills = [
+    { name: "HTML", img: html },
+    { name: "CSS", img: css },
+    { name: "JavaScript", img: javascript },
+    { name: "React", img: react },
+    { name: "Node + Express", img: node },
+    { name: "MySQL", img: mysql },
+    { name: "Git / GitHub", img: github },
+    { name: "Figma", img: figma },
+  ];
+
+  const urbaSkills = [
+    { name: "Qgis", img: qgis },
+    { name: "Mapbox GL JS", img: mapbox },
+    { name: "Autocad", img: autocad },
+    { name: "Sketchup", img: sketchup },
+    { name: "Photoshop", img: photoshop },
+    { name: "Indesign", img: indesign },
+    { name: "Illustrator", img: illustator },
   ];
 
   return (
@@ -42,9 +58,24 @@ function About() {
       <div className="skills">
         <div className="tape-section"></div>
         <h1>COMPÉTENCES</h1>
-        <div className="skillComponent">
-          {skills.map((skill) => {
-            return <Skill key={skills.indexOf(skill)} name={skill.name} />;
+        <div className="devSkillsContainer">
+          {devSkills.map((skill) => {
+            return (
+              <div className="skillButton" key={devSkills.indexOf(skill)}>
+                <span>{skill.name}</span>
+                <img src={skill.img} alt={skill.name} />
+              </div>
+            );
+          })}
+        </div>
+        <div className="urbaSkillsContainer">
+          {urbaSkills.map((skill) => {
+            return (
+              <div className="skillButton" key={urbaSkills.indexOf(skill)}>
+                <span>{skill.name}</span>
+                <img src={skill.img} alt={skill.name} />
+              </div>
+            );
           })}
         </div>
       </div>

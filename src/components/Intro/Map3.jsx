@@ -199,61 +199,61 @@ function Map3({ lat, lng, zoom, pitch, isChosen, rangeValue, arrival, departure 
   /*                                         OpenTripMap                                            
   /* ------------------------------------------------------------------------------------------------ */
 
-  useEffect(() => {
-    map.current.on("load", async () => {
-      // When the map loads, adding the source and layer
+  // useEffect(() => {
+  //   map.current.on("load", async () => {
+  //     // When the map loads, adding the source and layer
 
-      const otmPoints = {
-        type: "FeatureCollection",
-        features: [],
-      };
+  //     const otmPoints = {
+  //       type: "FeatureCollection",
+  //       features: [],
+  //     };
 
-      map.current.addSource("OpenTripMap", {
-        type: "geojson",
-        data: otmPoints,
-      });
+  //     map.current.addSource("OpenTripMap", {
+  //       type: "geojson",
+  //       data: otmPoints,
+  //     });
 
-      map.current.addLayer({
-        id: "OpenTripMap",
-        type: "circle",
-        source: "OpenTripMap",
-        paint: {
-          "circle-radius": 20,
-          "circle-color": "#cc6552",
-          "circle-opacity": 0.9,
-        },
-      });
-    });
+  //     map.current.addLayer({
+  //       id: "OpenTripMap",
+  //       type: "circle",
+  //       source: "OpenTripMap",
+  //       paint: {
+  //         "circle-radius": 20,
+  //         "circle-color": "#cc6552",
+  //         "circle-opacity": 0.9,
+  //       },
+  //     });
+  //   });
 
-    async function getOTM() {
-      try {
-        const response = await fetch(
-          `https://api.opentripmap.com/0.1/en/places/radius?radius=5000&lon=${arrival.lat}&lat=${arrival.lng}&kinds=interesting_places&format=json&apikey=5ae2e3f221c38a28845f05b63e84a3f12939805f99c1181877339c23`,
-          { method: "GET" }
-        );
-        const data = await response.json();
-        console.log(data);
-        const point = await {
-          type: "Feature",
-          geometry: {
-            type: "Point",
-            coordinates: [data[0].point.lat, data[0].point.lon],
-          },
-          properties: {
-            name: data[0].name,
-          },
-        };
-        console.log("point", point);
-        // otmPoints.features.push(point);
+  //   async function getOTM() {
+  //     try {
+  //       const response = await fetch(
+  //         `https://api.opentripmap.com/0.1/en/places/radius?radius=5000&lon=${arrival.lat}&lat=${arrival.lng}&kinds=interesting_places&format=json&apikey=5ae2e3f221c38a28845f05b63e84a3f12939805f99c1181877339c23`,
+  //         { method: "GET" }
+  //       );
+  //       const data = await response.json();
+  //       console.log(data);
+  //       const point = await {
+  //         type: "Feature",
+  //         geometry: {
+  //           type: "Point",
+  //           coordinates: [data[0].point.lat, data[0].point.lon],
+  //         },
+  //         properties: {
+  //           name: data[0].name,
+  //         },
+  //       };
+  //       console.log("point", point);
+  //       // otmPoints.features.push(point);
 
-        map.current.getSource("OpenTripMap").setData(point);
-      } catch (err) {
-        console.error(err);
-      }
-    }
+  //       map.current.getSource("OpenTripMap").setData(point);
+  //     } catch (err) {
+  //       console.error(err);
+  //     }
+  //   }
 
-    getOTM();
-  }, [arrival]);
+  //   getOTM();
+  // }, [arrival]);
 
   /* ------------------------------------------------------------------------------------------------ */
   /*                                        RETURN                                            
