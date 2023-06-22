@@ -25,7 +25,6 @@ function About() {
     { name: "Node + Express", img: node },
     { name: "MySQL", img: mysql },
     { name: "Git / GitHub", img: github },
-    { name: "Figma", img: figma },
   ];
 
   const urbaSkills = [
@@ -36,6 +35,7 @@ function About() {
     { name: "Photoshop", img: photoshop },
     { name: "Indesign", img: indesign },
     { name: "Illustrator", img: illustator },
+    { name: "Figma", img: figma },
   ];
 
   return (
@@ -64,7 +64,7 @@ function About() {
           <div className="devSkillsContainer">
             {devSkills.map((skill) => {
               return (
-                <div className="skillButton" key={devSkills.indexOf(skill)}>
+                <div className="skillButton skillButtonLarge" key={devSkills.indexOf(skill)}>
                   <span>{skill.name}</span>
                   <img src={skill.img} alt={skill.name} />
                 </div>
@@ -88,17 +88,23 @@ function About() {
         <div className="tape-section"></div>
         <h1>CONTACT</h1>
         <div className="contactContainer">
-          <div className="contactButton">
-            <img src={linkedin} alt="linkedin" />
+          <a
+            href="https://www.linkedin.com/in/thomaslonjon/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="contactButton"
+          >
             <span>LinkedIn</span>
-          </div>
-          <div className="contactButton">
-            <img src={github} alt="github" />
+            <img src={linkedin} alt="linkedin" />
+          </a>
+          <a href="https://github.com/ThomasLonjon" target="_blank" rel="noopener noreferrer" className="contactButton">
             <span>Github</span>
-          </div>
+            <img src={github} alt="github" />
+          </a>
+
           <div className="contactButton">
-            <img src={cv} alt="cv" />
             <span>Mon CV</span>
+            <img src={cv} alt="cv" />
           </div>
         </div>
       </div>

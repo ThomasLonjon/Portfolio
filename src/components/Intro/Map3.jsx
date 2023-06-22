@@ -3,7 +3,7 @@ import { useRef, useEffect } from "react";
 import mapboxgl from "mapbox-gl";
 
 mapboxgl.accessToken = import.meta.env.VITE_MAPBOX_ACCESS_TOKEN;
-const opentripmapAccessToken = import.meta.env.VITE_OPENTRIPMAP_API_KEY;
+// const opentripmapAccessToken = import.meta.env.VITE_OPENTRIPMAP_API_KEY;
 
 function Map3({ lat, lng, zoom, pitch, isChosen, rangeValue, arrival, departure }) {
   const mapContainer = useRef(null);

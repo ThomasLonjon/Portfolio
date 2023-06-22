@@ -1,18 +1,18 @@
-import Intro from "./components/Intro/Intro";
-import About from "./components/About/About";
-import Projects from "./components/Projects/Projects";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 
-function App() {
-  // ---------------------------------------------Return---------------------------------------------
+import Home from "./pages/Home";
+import Holimap from "./pages/Holimap";
+import GuessWhat from "./pages/GuessWhat";
 
+function App() {
   return (
-    <div className="background">
-      <Intro />
-      <div className="secondPart">
-        <About />
-        <Projects />
-      </div>
+    <div className="App">
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/Holimap" element={<Holimap />} />
+        <Route path="/GuessWhat" element={<GuessWhat />} />
+      </Routes>
     </div>
   );
 }
