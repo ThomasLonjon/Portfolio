@@ -13,6 +13,8 @@ import sketchup from "../../assets/img/sketchup.svg";
 import photoshop from "../../assets/img/ps.svg";
 import indesign from "../../assets/img/id.svg";
 import illustator from "../../assets/img/ai.svg";
+import linkedin from "../../assets/img/linkedin.svg";
+import cv from "../../assets/img/cv.svg";
 
 function About() {
   const devSkills = [
@@ -27,8 +29,8 @@ function About() {
   ];
 
   const urbaSkills = [
-    { name: "Qgis", img: qgis },
     { name: "Mapbox GL JS", img: mapbox },
+    { name: "Qgis", img: qgis },
     { name: "Autocad", img: autocad },
     { name: "Sketchup", img: sketchup },
     { name: "Photoshop", img: photoshop },
@@ -58,31 +60,47 @@ function About() {
       <div className="skills">
         <div className="tape-section"></div>
         <h1>COMPÉTENCES</h1>
-        <div className="devSkillsContainer">
-          {devSkills.map((skill) => {
-            return (
-              <div className="skillButton" key={devSkills.indexOf(skill)}>
-                <span>{skill.name}</span>
-                <img src={skill.img} alt={skill.name} />
-              </div>
-            );
-          })}
-        </div>
-        <div className="urbaSkillsContainer">
-          {urbaSkills.map((skill) => {
-            return (
-              <div className="skillButton" key={urbaSkills.indexOf(skill)}>
-                <span>{skill.name}</span>
-                <img src={skill.img} alt={skill.name} />
-              </div>
-            );
-          })}
+        <div className="SkillsSection">
+          <div className="devSkillsContainer">
+            {devSkills.map((skill) => {
+              return (
+                <div className="skillButton" key={devSkills.indexOf(skill)}>
+                  <span>{skill.name}</span>
+                  <img src={skill.img} alt={skill.name} />
+                </div>
+              );
+            })}
+          </div>
+          <div className="urbaSkillsContainer">
+            {urbaSkills.map((skill) => {
+              return (
+                <div className="skillButton" key={urbaSkills.indexOf(skill)}>
+                  <span>{skill.name}</span>
+                  <img src={skill.img} alt={skill.name} />
+                </div>
+              );
+            })}
+          </div>
         </div>
       </div>
 
       <div className="contactMe">
         <div className="tape-section"></div>
         <h1>CONTACT</h1>
+        <div className="contactContainer">
+          <div className="contactButton">
+            <img src={linkedin} alt="linkedin" />
+            <span>LinkedIn</span>
+          </div>
+          <div className="contactButton">
+            <img src={github} alt="github" />
+            <span>Github</span>
+          </div>
+          <div className="contactButton">
+            <img src={cv} alt="cv" />
+            <span>Mon CV</span>
+          </div>
+        </div>
       </div>
     </div>
   );
