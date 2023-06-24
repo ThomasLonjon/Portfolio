@@ -47,7 +47,9 @@ function Projects() {
                 <span>REST APIs</span>
                 <span>MapboxGL</span>
               </div>
-              <span className="github">→ GitHub ←</span>
+              <a href="https://github.com/Sashiki05/Hackathon-01" target="_blank" rel="noopener noreferrer">
+                <span className="github">→ GitHub ←</span>
+              </a>
             </div>
           </div>
         </Draggable>
@@ -61,14 +63,19 @@ function Projects() {
         <Draggable cancel="strong">
           <div className="cardProject2 card">
             <h3>THE MARIO PROJECT</h3>
-            <img src={mario} alt="mario" className="imgProject" />
+            <a href="https://t0mle.github.io/WCS-project1/" target="_blank" rel="noopener noreferrer">
+              <img src={mario} alt="mario" className="imgProject" />
+            </a>
+
             <div className="bottom-icons">
               <div className="stack">
                 <span>HTML</span>
                 <span>CSS</span>
                 <span>JavaScript</span>
               </div>
-              <span className="github">→ GitHub ←</span>
+              <a href="https://github.com/T0MLE/WCS-project1" target="_blank" rel="noopener noreferrer">
+                <span className="github">→ GitHub ←</span>
+              </a>
             </div>
           </div>
         </Draggable>
@@ -91,7 +98,9 @@ function Projects() {
                 <span>REST APIs</span>
                 <span>MapboxGL</span>
               </div>
-              <span className="github">→ GitHub ←</span>
+              <a href="https://github.com/ThomasLonjon/Guess" target="_blank" rel="noopener noreferrer">
+                <span className="github">→ GitHub ←</span>
+              </a>
             </div>
           </div>
         </Draggable>

@@ -5,226 +5,203 @@
 /* ------------------------------------------------------------------------------------------------ */
 
 .cardTitle {
-	@extend .card;
-	padding-left: 1.5vw;
-	top: 2vw;
-	left: 3vw;
-	width: 40vw;
-	height: 13vh;
+  @extend .card;
+  padding-left: 1.5vw;
+  top: 2vw;
+  left: 3vw;
+  width: 40vw;
+  height: 13vh;
 
-	background-image: url(../src/assets/img/paper1.jpg);
+  background-image: url(../src/assets/img/paper1.jpg);
 }
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                        Card 1                                          
 /* ------------------------------------------------------------------------------------------------ */
 
-.card1Container{
-	transform: rotate(0deg);
-	position: relative;
+.card1Container {
+  transform: rotate(0deg);
+  position: relative;
 
-	.card1 {
-		@extend .card;
-		@extend .cardHandCursor;
-		align-items: center;
-		top: 22vh;
-		left: 2vw;
-		width: 31vw;
-		height: 70vh;
-		background-image: url(../src/assets/img/paper4bis.jpg);
-	
-		strong {
-			width: 90%;
-			height: 85%;
-		}
-	}
+  .card1 {
+    @extend .card;
+    @extend .cardHandCursor;
+    align-items: center;
+    top: 22vh;
+    left: 2vw;
+    width: 31vw;
+    height: 70vh;
+    background-image: url(../src/assets/img/paper4bis.jpg);
+
+    strong {
+      width: 90%;
+      height: 85%;
+    }
+  }
 }
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                        Card 2                                          
 /* ------------------------------------------------------------------------------------------------ */
 
-.card2Container{
-	transform: rotate(-2deg);
-	position: relative;
+.card2Container {
+  transform: rotate(-2deg);
+  position: relative;
 
-	.card2 {
-		@extend .card;
-		@extend .cardHandCursor;
-		align-items: center;
-		top: 45vh;
-		left: 36vw;
-		width: 25vw;
-		height: 40vh;
-		background-image: url(../src/assets/img/paper5.jpg);
-	
-		strong {
-			width: 90%;
-			height: 80%;
-		}
-	}
+  .card2 {
+    @extend .card;
+    @extend .cardHandCursor;
+    align-items: center;
+    top: 45vh;
+    left: 36vw;
+    width: 25vw;
+    height: 40vh;
+    background-image: url(../src/assets/img/paper5.jpg);
+
+    strong {
+      width: 90%;
+      height: 80%;
+    }
+  }
 }
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                        Card 3                                         
 /* ------------------------------------------------------------------------------------------------ */
 
-.card3Container{
-	transform: rotate(0deg);
-	position: relative;
+.card3Container {
+  transform: rotate(0deg);
+  position: relative;
 
-	.card3{
-		@extend .card;
-		@extend .cardHandCursor;
-		align-items: center;
-		width: 40vw;
-		height: 90vh;
-		top: 5vh;
-		left: 58vw;
-		background-image: url(../src/assets/img/paper4bis.jpg);
-	
-		strong {
-			width: 93%;
-			height: 90%;
-		}
-	}
+  .card3 {
+    @extend .card;
+    @extend .cardHandCursor;
+    align-items: center;
+    width: 40vw;
+    height: 90vh;
+    top: 5vh;
+    left: 58vw;
+    background-image: url(../src/assets/img/paper4bis.jpg);
+
+    strong {
+      width: 93%;
+      height: 90%;
+    }
+  }
 }
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                        Card4                                          
 /* ------------------------------------------------------------------------------------------------ */
 
-.card4Container{
-	transform: rotate(2deg);
-	position: relative;
+.card4Container {
+  transform: rotate(2deg);
+  position: relative;
 
-	.card4 {
-		@extend .card;
-		@extend .cardHandCursor;
-		align-items: center;
-		top: 21vh;
-		left: 36vw;
-		width: 20vw;
-		height: 23vh;
-		background-image: url(../src/assets/img/paper4bis.jpg);
-								  
-		h3 {
-			font-family:$font-family_1 ;
-			font-size: 1vw;
-			margin-bottom: 3%;
-			text-align: center;
-		}
-	
-		strong {
-			border:0;
-			border-radius: 0;
-			overflow: visible;
-		}
-	
-		.firstPart{
-			@extend .cardHandCursor;
-			width: 90%;
-		}
-	
-		.secondPart{
-			@extend .cardHandCursor;
-			width: 90%;
-		}
-	
-		.secondPartHidden{
-			display: none;
-		}
+  .card4 {
+    @extend .card;
+    @extend .cardHandCursor;
+    align-items: center;
+    top: 21vh;
+    left: 36vw;
+    width: 20vw;
+    height: 23vh;
+    background-image: url(../src/assets/img/paper4bis.jpg);
 
-		&Small{
-			
-			height: 12vh;
-		}
+    h3 {
+      font-family: $font-family_1;
+      font-size: 1vw;
+      margin-bottom: 3%;
+      text-align: center;
+    }
 
-		&Tall{
-			height: 20vh;
-		}
-	}
+    strong {
+      border: 0;
+      border-radius: 0;
+      overflow: visible;
+    }
+
+    .firstPart {
+      @extend .cardHandCursor;
+      width: 90%;
+    }
+
+    .secondPart {
+      @extend .cardHandCursor;
+      width: 90%;
+    }
+
+    .secondPartHidden {
+      display: none;
+    }
+
+    &Small {
+      height: 12vh;
+    }
+
+    &Tall {
+      height: 20vh;
+    }
+  }
 }
-
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                         Geocoder                                            
 /* ------------------------------------------------------------------------------------------------ */
 
-
-.mapboxgl-ctrl-geocoder{
-	margin-left : auto;
-	margin-right : auto;
-	min-width: 100%;
-	min-height: 100%;	
-	box-shadow: none;
+.mapboxgl-ctrl-geocoder {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 100%;
+  min-height: 100%;
+  box-shadow: none;
 }
 
-
-.mapboxgl-ctrl-geocoder--icon{
-	display: none;
+.mapboxgl-ctrl-geocoder--icon {
+  display: none;
 }
 
-.suggestions-wrapper{
-	background-color: #cccab9;
+.suggestions-wrapper {
+  background-color: #cccab9;
 }
 
-
-
-.mapboxgl-ctrl-geocoder input[type='text']{
-	background-color: #cccab9;
-	font-family: $font-family_1;
-	user-select: auto;
-	&::selection{
-		background: #fff;
-	}
+.mapboxgl-ctrl-geocoder input[type="text"] {
+  background-color: #cccab9;
+  font-family: $font-family_1;
+  user-select: auto;
+  &::selection {
+    background: #fff;
+  }
 }
-
-mapboxgl-ctrl-geocoder--button{
-	background-color: red;
-}
-
-mapboxgl-ctrl-geocoder--pin-right{
-	background-color: red;
-}
-
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                      Buttons on Card 4                                           
 /* ------------------------------------------------------------------------------------------------ */
 
-.buttonContainer{
-	width: 100%;
-	margin-top: 3%;
-	margin-right: auto;
-	margin-left:auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
+.buttonContainer {
+  width: 100%;
+  margin-top: 3%;
+  margin-right: auto;
+  margin-left: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
-	.button{
-		text-align: center;
-		width: 48%;
-		padding: 0.5vw;
-		background-color: #d8d6c3;
-		font-size: .75vw;
-		mix-blend-mode: multiply;
-		cursor: pointer;
-		&:hover{
-		  transform: scale(1.02)}
+  .button {
+    text-align: center;
+    width: 48%;
+    padding: 0.5vw;
+    background-color: #d8d6c3;
+    font-size: 0.75vw;
+    mix-blend-mode: multiply;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.02);
+    }
+  }
 
-
-	}
-	
-	.clickedButton{
-		@extend .button;
-		background-color: #a09d89;
-	}
+  .clickedButton {
+    @extend .button;
+    background-color: #a09d89;
+  }
 }
-
-

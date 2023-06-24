@@ -11,8 +11,8 @@ export function ZindexProvider({ children }) {
     card3: 0,
     card4: 2,
     cardProject1: 4,
-    cardProject2: 6,
-    cardProject3: 5,
+    cardProject2: 5,
+    cardProject3: 6,
   });
 
   return (

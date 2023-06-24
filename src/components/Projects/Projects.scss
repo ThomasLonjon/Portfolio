@@ -1,5 +1,10 @@
 @import "../../App.scss";
 
+a {
+  display: flex;
+  justify-content: center;
+}
+
 .project-section {
   h1 {
     font-size: 2vw;
@@ -56,11 +61,6 @@
       justify-content: left;
       align-items: center;
     }
-
-    img {
-      width: 1vw;
-      cursor: pointer;
-    }
   }
 }
 
@@ -90,7 +90,7 @@
   .cardProject1 {
     @extend .cardHandCursor;
     top: 119vh;
-    left: 52vw;
+    left: 49vw;
     width: 25vw;
     height: 35vh;
     background-image: url(../src/assets/img/paper1bis.jpg);
@@ -108,10 +108,10 @@
   .cardProject2 {
     @extend .cardHandCursor;
     top: 159vh;
-    left: 55vw;
+    left: 54vw;
     width: 25vw;
     height: 35vh;
-    background-image: url(../src/assets/img/paper5.jpg);
+    background-image: url(../src/assets/img/paper4.jpg);
   }
 }
 
@@ -129,6 +129,6 @@
     left: 72vw;
     width: 25vw;
     height: 35vh;
-    background-image: url(../src/assets/img/paper1.jpg);
+    background-image: url(../src/assets/img/paper2.jpg);
   }
 }
