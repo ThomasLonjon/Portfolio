@@ -1,4 +1,6 @@
+import { useContext } from "react";
 import Draggable from "react-draggable";
+import ZindexContext from "../../context/Zindex";
 
 import mario from "../../assets/img/mario.png";
 import guesswhat from "../../assets/img/GuessWhat.png";
@@ -6,6 +8,21 @@ import holimap from "../../assets/img/Holymap.png";
 import "./Projects.scss";
 
 function Projects() {
+  // ---------------------------------------------HandleIndex-----------------------------------------
+
+  const { zIndex, setZIndex } = useContext(ZindexContext);
+
+  const handleIndex = (divID) => {
+    setZIndex((prevState) => {
+      let arr = Object.values(zIndex);
+      let max = Math.max(...arr);
+      return {
+        ...prevState,
+        [divID]: max + 1,
+      };
+    });
+  };
+
   return (
     <div className="project-section">
       <div className="project-section-title">
@@ -13,7 +30,11 @@ function Projects() {
         <h1>MES PROJETS</h1>
       </div>
 
-      <div className="cardProject1Container">
+      <div
+        className="cardProject1Container"
+        onMouseDown={() => handleIndex("cardProject1")}
+        style={{ zIndex: `${zIndex["cardProject1"]}` }}
+      >
         <Draggable cancel="strong">
           <div className="cardProject1 card">
             <h3>HOLIMAP FOR HOLIDAYS</h3>
@@ -32,7 +53,11 @@ function Projects() {
         </Draggable>
       </div>
 
-      <div className="cardProject2Container">
+      <div
+        className="cardProject2Container"
+        onMouseDown={() => handleIndex("cardProject2")}
+        style={{ zIndex: `${zIndex["cardProject2"]}` }}
+      >
         <Draggable cancel="strong">
           <div className="cardProject2 card">
             <h3>THE MARIO PROJECT</h3>
@@ -49,7 +74,11 @@ function Projects() {
         </Draggable>
       </div>
 
-      <div className="cardProject3Container">
+      <div
+        className="cardProject3Container"
+        onMouseDown={() => handleIndex("cardProject3")}
+        style={{ zIndex: `${zIndex["cardProject3"]}` }}
+      >
         <Draggable cancel="strong">
           <div className="cardProject3 card">
             <h3>GUESS WHAT</h3>

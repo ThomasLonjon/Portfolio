@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import Draggable from "react-draggable";
 import Map1 from "../Maps/Map1";
 import Map2 from "../Maps/Map2";
@@ -6,6 +6,7 @@ import Map3 from "../Maps/Map3";
 import Slider from "../Slider/Slider";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import ZindexContext from "../../context/Zindex";
 import "./Intro.scss";
 
 function Intro() {
@@ -48,12 +49,7 @@ function Intro() {
 
   const [rangeValue, setRangeValue] = useState(10);
 
-  const [zIndex, setZIndex] = useState({
-    card1: 1,
-    card2: 3,
-    card3: 0,
-    card4: 2,
-  });
+  const { zIndex, setZIndex } = useContext(ZindexContext);
 
   // ---------------------------------------------HandleIndex-----------------------------------------
 

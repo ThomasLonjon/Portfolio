@@ -1,6 +1,9 @@
 @import "../../App.scss";
 
 .project-section {
+  h1 {
+    font-size: 2vw;
+  }
   h3 {
     padding: 1%;
     width: 90%;
@@ -8,24 +11,57 @@
     margin-left: auto;
     border-bottom: solid 1px rgb(153, 153, 153);
     border-top: solid 1px rgb(153, 153, 153);
-    margin-top: 5%;
+    margin-top: 3%;
   }
 
   span {
-	font-size: 0.75vw;
-	padding: 1% 2% 1% 2%;
-	margin: 0 1% 0 0%;
-	white-space: nowrap;
+    @extend .cardHandCursor;
+    font-size: 0.75vw;
+    padding: 1% 2% 1% 2%;
+    margin: 0 1% 0 0%;
+    white-space: nowrap;
   }
 
-  .github{
-	margin: 0;
-	cursor: pointer;
-	&:hover{
-		transform: scale(1.1)
-	}
+  .github {
+    margin: 0;
+    cursor: pointer;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
 
-}
+  .imgProject {
+    margin: 0 auto 0 auto;
+    max-width: 90%;
+    height: auto;
+
+    mix-blend-mode: multiply;
+    border-radius: 1vw;
+    margin-top: 2%;
+    cursor: pointer;
+  }
+
+  .bottom-icons {
+    @extend .cardHandCursor;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    border-bottom: solid 1px rgb(153, 153, 153);
+    border-top: solid 1px rgb(153, 153, 153);
+    display: flex;
+    justify-content: space-between;
+
+    .stack {
+      display: flex;
+      justify-content: left;
+      align-items: center;
+    }
+
+    img {
+      width: 1vw;
+      cursor: pointer;
+    }
+  }
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -41,42 +77,6 @@
   width: 50vw;
   height: 7vh;
   background-image: url(../src/assets/img/paper1.jpg);
-
-  h1 {
-    font-size: 2vw;
-  }
-}
-
-.imgProject {
-  margin: 0 auto 0 auto;
-  max-width: 90%;
-  height: auto;
-
-  mix-blend-mode: multiply;
-  border-radius: 1vw;
-  margin-top: 2%;
-  cursor: pointer;
-}
-
-.bottom-icons {
-  width: 90%;
-  margin-right: auto;
-  margin-left: auto;
-  border-bottom: solid 1px rgb(153, 153, 153);
-  border-top: solid 1px rgb(153, 153, 153);
-  display: flex;
-  justify-content: space-between;
-
-  .stack {
-    display: flex;
-    justify-content: left;
-    align-items: center;
-  }
-
-  img {
-    width: 1vw;
-    cursor: pointer;
-  }
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -88,6 +88,7 @@
   position: relative;
 
   .cardProject1 {
+    @extend .cardHandCursor;
     top: 119vh;
     left: 52vw;
     width: 25vw;
@@ -105,6 +106,7 @@
   position: relative;
 
   .cardProject2 {
+    @extend .cardHandCursor;
     top: 159vh;
     left: 55vw;
     width: 25vw;
@@ -122,6 +124,7 @@
   position: relative;
 
   .cardProject3 {
+    @extend .cardHandCursor;
     top: 135vh;
     left: 72vw;
     width: 25vw;
