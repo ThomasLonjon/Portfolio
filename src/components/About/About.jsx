@@ -15,6 +15,8 @@ import indesign from "../../assets/img/id.svg";
 import illustator from "../../assets/img/ai.svg";
 import linkedin from "../../assets/img/linkedin.svg";
 import cv from "../../assets/img/cv.svg";
+import cvPdf from "../../assets/img/CV-Thomas Lonjon.pdf";
+import "./About.scss";
 
 function About() {
   const devSkills = [
@@ -102,10 +104,10 @@ function About() {
             <img src={github} alt="github" />
           </a>
 
-          <div className="contactButton">
+          <a href={cvPdf} download="CV-Thomas-Lonjon.pdf" className="contactButton">
             <span>Mon CV</span>
             <img src={cv} alt="cv" />
-          </div>
+          </a>
         </div>
       </div>
     </div>

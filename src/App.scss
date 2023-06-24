@@ -1,3 +1,9 @@
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                             Variables                                            
+/* ------------------------------------------------------------------------------------------------ */
+
+
 $font-family_1: "Federo";
 $font-family_2: "Fascinate";
 $font-family_3: "Graduate";
@@ -5,8 +11,6 @@ $font-family_4: "FrancoisOne";
 $background-color_1: #e5e2d0;
 $background-color_2: #a6a6a6;
 $shadow : 0px 5px 5px rgba(0, 0, 0, 10), 0px 2px 10px rgba(0, 0, 0, 10), rgb(38, 57, 77) 0px 20px 30px -10px;
-// $shadow : rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-// $shadow : rgb(38, 57, 77) 0px 20px 30px -10px;
 $shadowStiked : 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5);
 $radius : 1vw;
 $radiusMap : 1.2vw;
@@ -48,12 +52,19 @@ $radiusMap : 1.2vw;
 	user-select: none;
 }
 
+.App{
+	width: 100vw;
+}
+
+#root{
+	width: 100vw;
+}
+
 .background {
 	background: url(../src/assets/img/Bordless.png);
 	background-size: cover;
 	height: 200vh;
-
-    
+	width: 100vw;
 }
 
 
@@ -84,6 +95,10 @@ h4 {
 	margin-bottom: 1%;
 }
 
+a {text-decoration: none;
+	color: #202020;}
+	
+
 .credits {
 	font-family: $font-family_3;
 	font-size: 0.5vw;
@@ -92,56 +107,22 @@ h4 {
 
 
 
+
 /* ------------------------------------------------------------------------------------------------ */
-/*                                         Map Cards                                              
+/*                                         Cards                                             
 /* ------------------------------------------------------------------------------------------------ */
 
-.cardTitle {
-	padding-left: 1.5vw;
+
+.card{
 	position: absolute;
-	top: 2vw;
-	left: 3vw;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 40vw;
-	height: 13vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper1.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-}
-
-// ---------------------------------------------card1------------------------------------------------
-
-.card1Container{
-	transform: rotate(0deg);
-	position: relative;
-}
-
-.card1 {
-	position: absolute;
-	top: 22vh;
-	left: 2vw;
 	display: flex;
 	justify-content: space-evenly;
-	align-items: center;
 	flex-direction: column;
-	width: 31vw;
-	height: 70vh;
-	background-color: $background-color_1;
 	box-shadow: $shadow;
 	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper4bis.jpg);
 	background-repeat: no-repeat;
 	background-position: center;
 	background-size: cover;
-
 
 	h3 {
 		text-align: center;
@@ -150,8 +131,6 @@ h4 {
 
 	strong {
 		border:1px solid #303030;
-		width: 90%;
-		height: 85%;
 		margin: auto auto;
 		overflow: hidden;
 		border-radius: $radiusMap;
@@ -163,723 +142,33 @@ h4 {
 	}
 }
 
+.cardHandCursor{
+	cursor : grab;
+	cursor: -moz-grab;
+	cursor: -webkit-grab;
 
-
-
-
-
-
-// ---------------------------------------------card2------------------------------------------------
-
-.card2Container{
-	transform: rotate(-2deg);
-	position: relative;
-}
-
-
-.card2 {
-	position: absolute;
-	top: 45vh;
-	left: 36vw;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-	width: 25vw;
-	height: 40vh;
-	background-color: $background-color_1;
-	box-shadow: $shadow;
-	border-radius: $radius;
-
-
-	background-image: url(../src/assets/img/paper5.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-
-	h3 {
-		text-align: center;
-		margin-top: 5%;
+	&:active{
+		cursor:grabbing;
+		cursor: -moz-grabbing;
+		cursor: -webkit-grabbing;
 	}
 
-	strong {
-		width: 90%;
-		height: 80%;
-		border: 1px solid #303030;
-		margin: auto auto;
-		overflow: hidden;
-		border-radius: $radiusMap;
-		
-	}
-
-	p {
-		padding-top: 1%;
-		padding-bottom: 2%;
-	}
-
-
-}
-
-
-
-
-// ---------------------------------------------card3------------------------------------------------
-
-.card3Container{
-	transform: rotate(0deg);
-	position: relative;
-}
-
-
-.card3{
-	width: 40vw;
-	height: 90vh;
-	position: absolute;
-	top: 5vh;
-	left: 58vw;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-	background-color: $background-color_1;
-	box-shadow: $shadow;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper4bis.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-
-	h3 {
-		text-align: center;
-		margin-top: 5%;
-	}
-
-	strong {
-		width: 93%;
-		height: 90%;
-		border: 1px solid #303030;
-		margin: auto auto;
-		overflow: hidden;
-		border-radius: $radiusMap;
-	}
-
-	p {
-		padding-top: 1%;
-		padding-bottom: 2%;
-	}
-}
-
-
-
-
-// ---------------------------------------------card4------------------------------------------------
-
-.card4Container{
-	transform: rotate(2deg);
-	position: relative;
-}
-
-
-.card4 {
-	position: absolute;
-	top: 21vh;
-	left: 36vw;
-	display: flex;
-	justify-content: space-evenly;
-	align-items: center;
-	flex-direction: column;
-	width: 20vw;
-	height: 23vh;
-	background-color: $background-color_1;
-	box-shadow: $shadow;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper4bis.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-	
-                                                
-	h3 {
-		font-family:$font-family_1 ;
-		font-size: 1vw;
-		margin-bottom: 3%;
-		text-align: center;
-	}
-
-	strong.no-cursor {
-		width: 100%;
-		position: relative;
-	}
-
-	.firstPart{
-		width: 90%;
-	}
-
-	.secondPart{
-		width: 90%;
-	}
-
-	.secondPartHidden{
-		display: none;
-	}
-
-}
-
-.card4Small{
-	height: 12vh;
-}
-
-.card4Tall{
-	height: 20vh;
-}
-
-
-// .card4::after {
-// 	content: "";
-// 	position: fixed;
-// 	top: 0;
-// 	left: 0;
-// 	width: 100%;
-// 	height: 100%;
-// 	background-image: url(../src/assets/img/paper4bis.jpg);
-// 	background-repeat: no-repeat;
-// 	background-position: center;
-// 	background-size: cover;
-// 	z-index: 400;
-// 	mix-blend-mode: multiply;
-// 	pointer-events: none;
-
-// 	  }
-
-
-// ---------------------------------------------cardArrow------------------------------------------------
-
-.arrowCard{
-	position: absolute;
-	left : 41vw;
-	top : 90vh;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: center;
-	width: 8vw;
-	height: 2.5vw;
-	background-color: $background-color_1;
-	box-shadow: $shadow;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper2.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	p{
-		font-size: .6vw;
-	}
-}
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                         Geocoder                                            
-/* ------------------------------------------------------------------------------------------------ */
-
-
-.suggestions-wrapper{
-	background-color: #cccab9;
-
-}
-
-
-.mapboxgl-ctrl-geocoder{
-	margin-left : auto;
-	margin-right : auto;
-	min-width: 100%;
-	min-height: 100%;
-	
-}
-
-
-.mapboxgl-ctrl-geocoder--icon{
-	display: none;
-}
-
-.mapboxgl-ctrl-geocoder input[type='text']{
-	background-color: #cccab9;
-	font-family: $font-family_1;
-	user-select: auto;
-}
-
-
-.mapboxgl-ctrl-geocoder.mapboxgl-ctrl{
-	box-shadow: none;
-}
-
-
-.mapboxgl-ctrl-geocoder input[type='text']::selection{
-	background: #fff;
-
-}
-
-
-
-
-
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                         Presentation Cards                                              
-/* ------------------------------------------------------------------------------------------------ */
-
-
-// ---------------------------------------------About me------------------------------------------------
-
-.AboutMe {
-	padding-left: 1.5vw;
-	padding-right: 1.5vw;
-	position: absolute;
-	top: 105vh;
-	left: 3vw;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 40vw;
-	height: 30vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper2.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-
-	h1{
-		font-size: 2vw;
+	p,h3,h4{
+		cursor : grab;
+		cursor: -moz-grab;
+		cursor: -webkit-grab;
+
+		&:active{
+			cursor:grabbing;
+			cursor: -moz-grabbing;
+			cursor: -webkit-grabbing;
 		}
-	p{
-	font-size: .8vw;	
-	margin-top: 1vw;
 	}
-}
-
-// ---------------------------------------------Skills------------------------------------------------
-
-.skills {
-	padding-left: 1.5vw;
-	padding-right: 1.5vw;
-	position: absolute;
-	top: 142vh;
-	left: 3vw;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 40vw;
-	height: 28vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper3.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-
-	h1{
-	font-size: 2vw;
-	margin-bottom: 5%;
-	}
-
-	p{
-	font-size: 1vw;	
-	margin-top: 1vw;
-	}
-
-	span{
-		font-size: .75vw;
-	}
-
-	img{width: 3vw};
-
-
-	.SkillsSection{
-		display: flex;
-		justify-content: center;
-		flex-direction: column;
-		align-items: center;
-	}
-
-
-
-	.devSkillsContainer{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-		margin-bottom: 1%;
-	}
-
-	.urbaSkillsContainer{
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: space-between;
-		align-items: center;
-		width: 100%;
-	}
-
-
-	.skillButton{
-		background-color: #f3f1e0;
-		mix-blend-mode: multiply;
-		margin-right: 1%;
-		margin-bottom: 1%;
-		padding: 1.3%;
-		border-radius: 1vw;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		height: 90%;
-		}
-
-	.skillButtonLarge{
-		padding-left: 2%;
-		padding-: 2%;
-	}
-
-}
-
-
-
-
-
-
-
-
-// ---------------------------------------------Contact me------------------------------------------------
-
-
-.contactMe {
-	padding-left: 1.5vw;
-	padding-right: 1.5vw;
-	position: absolute;
-	top: 178vh;
-	left: 12vw;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 20vw;
-	height: 17vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper1bis.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	h1{
-	font-size: 2vw;
-	padding-left: 7%;
-	}
-
-	span{
-		font-size: .75vw;
-	}
-
-	img{width: 3vw};
-
-	.contactContainer{
-		display: flex;
-		justify-content: center;
-		align-items: center;
-		margin-top: 8%;
-	
-	
-		.contactButton{
-			display : flex;
-			flex-direction: column;
-			justify-content : space-around;
-			background-color: #f3f1e0;
-			mix-blend-mode: multiply;
-			margin-right: 5%;
-			margin-left: 5%;
-			margin-bottom: 1%;
-			padding: 2% 4% 2% 4%;
-			border-radius: 1vw;
-		}	
-	}
-}
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                        Project Cards                                            
-/* ------------------------------------------------------------------------------------------------ */
-
-.projects {
-	padding-left: 1.5vw;
-	padding-right: 1.5vw;
-	position: absolute;
-	top: 105vh;
-	left: 48vw;
-	display: flex;
-	justify-content: center;
-	flex-direction: column;
-	width: 50vw;
-	height: 7vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper1.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	h1{
-	font-size: 2vw;
-	}
-}
-
-// ---------------------------------------------Containers------------------------------------------------
-
-
-.cardProject1Container {
-	transform: rotate(-2deg);
-	position: relative;
-}
-
-.cardProject2Container {
-	transform: rotate(2deg);
-	position: relative;
-}
-
-.cardProject3Container {
-	transform: rotate(1deg);
-	position: relative;
-}
-
-// ---------------------------------------------Project1------------------------------------------------
-
-.cardProject1 {
-	position: absolute;
-	top: 119vh;
-	left: 52vw;
-	align-items: center;
-	flex-direction: column;
-	width: 22vw;
-	height: 35vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper1bis.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	h3 {
-		margin-top: 7%;
-		margin-bottom: 3%;
-		padding-left: 5%;
-	}
-}
-
-// ---------------------------------------------Project2------------------------------------------------
-
-.cardProject2 {
-	position: absolute;
-	top: 159vh;
-	left: 55vw;
-	align-items: center;
-	flex-direction: column;
-	width: 22vw;
-	height: 35vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper5.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	h3 {
-		margin-top: 7%;
-		margin-bottom: 3%;
-		padding-left: 5%;
-	}
-}
-
-
-// ---------------------------------------------Project3------------------------------------------------
-
-.cardProject3 {
-	position: absolute;
-	top: 135vh;
-	left: 72vw;
-	align-items: center;
-	flex-direction: column;
-	width: 22vw;
-	height: 35vh;
-	background-color: $background-color_1;
-	box-shadow: $shadowStiked;
-	border-radius: $radius;
-
-	background-image: url(../src/assets/img/paper1.jpg);
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
-
-	h3 {
-		margin-top: 7%;
-		margin-bottom: 3%;
-		padding-left: 5%;
-	}
-}
-
-
-
-
-
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                         Buttons                                           
-/* ------------------------------------------------------------------------------------------------ */
-
-.buttonContainer{
-	width: 100%;
-	margin-top: 3%;
-	margin-right: auto;
-	margin-left:auto;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-}
-
-.button{
-	text-align: center;
-	width: 48%;
-	padding: 0.5vw;
-	background-color: #d8d6c3;
-	font-size: .75vw;
-	mix-blend-mode: multiply;
-}
-
-.clickedButton{
-	text-align: center;
-	width: 48%;
-	padding: 0.5vw;
-	background-color: #a09d89;
-	font-size: .75vw;
 }
 
 
 /* ------------------------------------------------------------------------------------------------ */
-/*                                            Slider                                      
-/* ------------------------------------------------------------------------------------------------ */
-
-
-.sliderContainerHidden{
-	display: none;
-}
-
-
-.sliderContainer{
-	width: 100%;
-	margin-left: auto;
-	margin-right: auto;
-	margin-bottom: 6%;
-
-	strong {
-		border: none;
-	}
-}
-
-.slider {
-	-webkit-appearance: none;
-	appearance: none;
-	width: 100%;
-	height: 2px;
-	border-radius: 1px;
-	background: #b0b0b0;
-	outline: none;
-	-webkit-transition: 0.2s;
-	transition: opacity 0.2s;
-
-  }
-  
-  .slider::-webkit-slider-thumb {
-	-webkit-appearance: none;
-	appearance: none;
-	width: .75vw;
-	height: .75vw;
-	border-radius: 50%;
-	background: #8c8c8c;
-	cursor: pointer;
-  }
-  
-  .textSlider {
-	padding-top: 10%;
-	color:  #202020;
-	text-align: center;
-  }
-
-
-
-
-
-
-
-
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                            Draggable                                        
-/* ------------------------------------------------------------------------------------------------ */
-
-
-.react-draggable {
-	strong {
-		display: block;
-	}
-}
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                          Maps                                          
-/* ------------------------------------------------------------------------------------------------ */
-
-.map-container-overlay {
-	border-radius: $radiusMap;
-	overflow: hidden;
-  }
-
-
-.mapboxgl-ctrl-bottom-left {
-	display: none;
-}
-
-.mapboxgl-ctrl-bottom-right {
-	display: none;
-}
-
-div.map.mapboxgl-map {
-	height: 110%;
-	width: 100%;
-}
-
-
-.mapboxgl-canvas-container{
-	height: 100%;
-	width: 100%;
-}
-
-
-
-/* ------------------------------------------------------------------------------------------------ */
-/*                                          Tape                                           
+/*                                        Tape on Cards                                       
 /* ------------------------------------------------------------------------------------------------ */
 
 .top-tape {
@@ -932,3 +221,15 @@ div.map.mapboxgl-map {
 		background-color: $background-color_2;
 	}
 }
+
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                            Draggable                                        
+/* ------------------------------------------------------------------------------------------------ */
+
+
+// .react-draggable {
+// 	strong {
+// 		display: block;
+// 	}
+// }

@@ -1,33 +1,48 @@
 import Draggable from "react-draggable";
 
-function About() {
+import mario from "../../assets/img/mario.png";
+import guesswhat from "../../assets/img/GuessWhat.png";
+import holimap from "../../assets/img/Holymap.png";
+import "./Projects.scss";
+
+function Projects() {
   return (
     <div>
-      <div className="projects">
+      <div className="projects card">
         <div className="top-tape"></div>
         <h1>MES PROJETS</h1>
       </div>
 
       <div className="cardProject1Container">
         <Draggable cancel="strong">
-          <div className="cardProject1">
+          <div className="cardProject1 card">
             <h3>HOLIMAP FOR HOLIDAYS</h3>
+            <img src={holimap} alt="holimap" className="imgProject" />
           </div>
         </Draggable>
       </div>
 
       <div className="cardProject2Container">
         <Draggable cancel="strong">
-          <div className="cardProject2">
+          <div className="cardProject2 card">
             <h3>THE MARIO PROJECT</h3>
+            <img src={mario} alt="mario" className="imgProject" />
           </div>
         </Draggable>
       </div>
 
       <div className="cardProject3Container">
         <Draggable cancel="strong">
-          <div className="cardProject3">
-            <h3>GUESS WHERE</h3>
+          <div className="cardProject3 card">
+            <h3>GUESS WHAT</h3>
+            <img src={guesswhat} alt="guessWhat" className="imgProject" />
+            <div className="stack">
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+              <span>React</span>
+              <span>API Rest</span>
+            </div>
           </div>
         </Draggable>
       </div>
@@ -35,4 +50,4 @@ function About() {
   );
 }
 
-export default About;
+export default Projects;

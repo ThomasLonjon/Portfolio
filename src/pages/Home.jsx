@@ -8,10 +8,8 @@ function Home() {
   return (
     <div className="background">
       <Intro />
-      <div className="secondPart">
-        <About />
-        <Projects />
-      </div>
+      <About />
+      <Projects />
     </div>
   );
 }

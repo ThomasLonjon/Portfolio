@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
 import Draggable from "react-draggable";
-import Map1 from "./Map1";
-import Map2 from "./Map2";
-import Map3 from "./Map3";
-import Slider from "./Slider";
+import Map1 from "../Maps/Map1";
+import Map2 from "../Maps/Map2";
+import Map3 from "../Maps/Map3";
+import Slider from "../Slider/Slider";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
+import "./Intro.scss";
 
 function Intro() {
   // -------------------------------------------UseStates-----------------------------------------
@@ -216,15 +217,6 @@ function Intro() {
                 <div id="geocoder"></div>
               </strong>
             </div>
-          </div>
-        </Draggable>
-      </div>
-
-      <div className="arrowCardContainer">
-        <Draggable>
-          <div className="arrowCard">
-            <p>CONTINUEZ LA VISITE</p>
-            <h4>⌄</h4>
           </div>
         </Draggable>
       </div>
