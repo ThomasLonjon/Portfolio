@@ -1,8 +1,6 @@
-
 /* ------------------------------------------------------------------------------------------------ */
 /*                                             Variables                                            
 /* ------------------------------------------------------------------------------------------------ */
-
 
 $font-family_1: "Federo";
 $font-family_2: "Fascinate";
@@ -10,226 +8,235 @@ $font-family_3: "Graduate";
 $font-family_4: "FrancoisOne";
 $background-color_1: #e5e2d0;
 $background-color_2: #a6a6a6;
-$shadow : 0px 5px 5px rgba(0, 0, 0, 10), 0px 2px 10px rgba(0, 0, 0, 10), rgb(38, 57, 77) 0px 20px 30px -10px;
-$shadowStiked : 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5);
-$radius : 1vw;
-$radiusMap : 1.2vw;
-
+$shadow: 0px 5px 5px rgba(0, 0, 0, 10), 0px 2px 10px rgba(0, 0, 0, 10), rgb(38, 57, 77) 0px 20px 30px -10px;
+$shadowStiked: 0px 5px 20px rgba(0, 0, 0, 0.5), 0px 2px 10px rgba(0, 0, 0, 0.5);
+$radius: 1vw;
+$radiusMap: 1.2vw;
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                             Fonts                                                
 /* ------------------------------------------------------------------------------------------------ */
 @font-face {
-	font-family: "Federo";
-	src: url("../src/assets/fonts/Federo-Regular.ttf") format("truetype");
+  font-family: "Federo";
+  src: url("../src/assets/fonts/Federo-Regular.ttf") format("truetype");
 }
 @font-face {
-	font-family: "Fascinate";
-	src: url("../src/assets/fonts/Fascinate-Regular.ttf") format("truetype");
+  font-family: "Fascinate";
+  src: url("../src/assets/fonts/Fascinate-Regular.ttf") format("truetype");
 }
 @font-face {
-	font-family: "Graduate";
-	src: url("../src/assets/fonts/Graduate-Regular.ttf") format("truetype");
+  font-family: "Graduate";
+  src: url("../src/assets/fonts/Graduate-Regular.ttf") format("truetype");
 }
 
 @font-face {
-	font-family: "FrancoisOne";
-	src: url("../src/assets/fonts/FrancoisOne-Regular.ttf") format("truetype");
+  font-family: "FrancoisOne";
+  src: url("../src/assets/fonts/FrancoisOne-Regular.ttf") format("truetype");
 }
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                            Root                                                
 /* ------------------------------------------------------------------------------------------------ */
 
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-	text-decoration: none;
-	font-family: $font-family_1;
-	cursor: cell;
-	user-select: none;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+  font-family: $font-family_1;
+  cursor: cell;
+  user-select: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.App{
-	width: 100vw;
+.App {
+  width: 100vw;
 }
 
-#root{
-	width: 100vw;
+#root {
+  width: 100vw;
 }
 
 .background {
-	background: url(../src/assets/img/Bordless.png);
-	background-size: cover;
-	height: 200vh;
-	width: 100vw;
+  background: url(../src/assets/img/Bordless.png);
+  background-size: cover;
+  height: 200vh;
+  width: 100vw;
+  overflow: hidden;
 }
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                          Texts                                           
-/* ------------------------------------------------------------------------------------------------ */
+  /* ------------------------------------------------------------------------------------------------ */
 
 h1 {
-	font-family: $font-family_2;
-	font-size: 3vw;
+  font-family: $font-family_2;
+  font-size: 3vw;
 }
 
 h2 {
-	font-size: 1.25vw;
-	font-weight: 300;
+  font-size: 1.25vw;
+  font-weight: 300;
 }
 
 h3 {
-	font-size: 1.25vw;
-	font-family: $font-family_1;
-	margin-bottom: 1%;
+  font-size: 1.25vw;
+  font-family: $font-family_1;
+  margin-bottom: 1%;
 }
-
 
 h4 {
-	font-size: 0.9vw;
-	font-family: $font-family_1;
-	margin-bottom: 1%;
+  font-size: 0.9vw;
+  font-family: $font-family_1;
+  margin-bottom: 1%;
 }
 
-a {text-decoration: none;
-	color: #202020;}
-	
+a {
+  text-decoration: none;
+  color: #202020;
+}
 
 .credits {
-	font-family: $font-family_3;
-	font-size: 0.5vw;
-	text-align: center;	
+  font-family: $font-family_3;
+  font-size: 0.5vw;
+  text-align: center;
 }
-
-
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                         Cards                                             
-/* ------------------------------------------------------------------------------------------------ */
+  /* ------------------------------------------------------------------------------------------------ */
 
+.card {
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  box-shadow: $shadow;
+  border-radius: $radius;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
-.card{
-	position: absolute;
-	display: flex;
-	justify-content: space-evenly;
-	flex-direction: column;
-	box-shadow: $shadow;
-	border-radius: $radius;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-size: cover;
+  h3 {
+    text-align: center;
+    margin-top: 5%;
+  }
 
-	h3 {
-		text-align: center;
-		margin-top: 5%;
-	}
+  strong {
+    border: 1px solid #303030;
+    margin: auto auto;
+    overflow: hidden;
+    border-radius: $radiusMap;
+  }
 
-	strong {
-		border:1px solid #303030;
-		margin: auto auto;
-		overflow: hidden;
-		border-radius: $radiusMap;
-	}
-
-	p {
-		padding-top: 1%;
-		padding-bottom: 2%;
-	}
+  p {
+    padding-top: 1%;
+    padding-bottom: 2%;
+  }
 }
 
-.cardHandCursor{
-	cursor : grab;
-	cursor: -moz-grab;
-	cursor: -webkit-grab;
+.cardHandCursor {
+  cursor: grab;
+  cursor: -moz-grab;
+  cursor: -webkit-grab;
 
-	&:active{
-		cursor:grabbing;
-		cursor: -moz-grabbing;
-		cursor: -webkit-grabbing;
-	}
+  &:active {
+    cursor: grabbing;
+    cursor: -moz-grabbing;
+    cursor: -webkit-grabbing;
+  }
 
-	p,h3,h4{
-		cursor : grab;
-		cursor: -moz-grab;
-		cursor: -webkit-grab;
+  p,
+  h3,
+  h4 {
+    cursor: grab;
+    cursor: -moz-grab;
+    cursor: -webkit-grab;
 
-		&:active{
-			cursor:grabbing;
-			cursor: -moz-grabbing;
-			cursor: -webkit-grabbing;
-		}
-	}
+    &:active {
+      cursor: grabbing;
+      cursor: -moz-grabbing;
+      cursor: -webkit-grabbing;
+    }
+  }
 }
-
 
 /* ------------------------------------------------------------------------------------------------ */
 /*                                        Tape on Cards                                       
-/* ------------------------------------------------------------------------------------------------ */
+  /* ------------------------------------------------------------------------------------------------ */
 
 .top-tape {
-	position: absolute;
-	height: 3vmin;
-	top: -1vw;
-	left : 30%;
-	width: 40%;
-	background-color: $background-color_2;
-	opacity: 0.5;
-	background-blend-mode: multiply;
+  position: absolute;
+  height: 3vmin;
+  top: -1vw;
+  left: 30%;
+  width: 40%;
+  background-color: $background-color_2;
+  opacity: 0.5;
+  background-blend-mode: multiply;
 }
 
 .tape-section {
-	position: absolute;
-	width: 100%;
-	top: 0;
-	background-blend-mode: difference;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  background-blend-mode: difference;
 
-	&::before {
-		content: "";
-		width: 7.5vmin;
-		height: 2.5vmin;
-		position: absolute;
-		background-color: $background-color_2;
-		opacity: 0.5;
-		background-blend-mode: difference;
-	}
+  &::before {
+    content: "";
+    width: 7.5vmin;
+    height: 2.5vmin;
+    position: absolute;
+    background-color: $background-color_2;
+    opacity: 0.5;
+    background-blend-mode: difference;
+  }
 
-	&::after {
-		content: "";
-		width: 7.5vmin;
-		height: 2.5vmin;
-		position: absolute;
-		background-color: $background-color_2;
-		opacity: 0.5;
-		background-blend-mode: difference;
-	}
+  &::after {
+    content: "";
+    width: 7.5vmin;
+    height: 2.5vmin;
+    position: absolute;
+    background-color: $background-color_2;
+    opacity: 0.5;
+    background-blend-mode: difference;
+  }
 
-	&:before {
-		transform: rotate(-45deg);
-		left: -6vmin;
-		background-color: $background-color_2;
-	}
+  &:before {
+    transform: rotate(-45deg);
+    left: -6vmin;
+    background-color: $background-color_2;
+  }
 
-	&:after {
-		transform: rotate(45deg);
-		right: 0vmin;
-		top: 0;
-		background-color: $background-color_2;
-	}
+  &:after {
+    transform: rotate(45deg);
+    right: 0vmin;
+    top: 0;
+    background-color: $background-color_2;
+  }
 }
 
-
 /* ------------------------------------------------------------------------------------------------ */
-/*                                            Draggable                                        
+/*                                         Mobile                                   
 /* ------------------------------------------------------------------------------------------------ */
 
+@media screen and (max-width: 900px) {
+  .background {
+    height: 270vh;
+    width: 100vw;
+    background-size: 410%;
+  }
+  .top-tape {
+    display: none;
+  }
 
-// .react-draggable {
-// 	strong {
-// 		display: block;
-// 	}
-// }
+  .tape-section {
+    display: none;
+  }
+}

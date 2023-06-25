@@ -19,6 +19,15 @@ import cvPdf from "../../assets/img/CV-Thomas Lonjon.pdf";
 import "./About.scss";
 
 function About() {
+  const textAbout = {
+    paragraphe1: "Bienvenue sur mon Portfolio !",
+    paragraphe2:
+      " Ingénieur et architecte-urbaniste, j'ai travaillé plusieurs années en agence d'urbanisme et de paysage où j’ai participé à des projets de rénovation urbaine, qui m'ont captivés. Ma passion pour la cartographie m'a conduit à me former au développement web afin d'exploiter le potentiel narratif des cartes interactives 3D.",
+    paragraphe3:
+      "Aujourd'hui, je cherche à collaborer avec des personnes partageant les mêmes intérêts, afin de repousser les limites de la cartographie, en la rendant dynamique et participative. N'hésitez pas à me contacter si vous souhaitez discuter de projets passionnants où la cartographie joue un rôle central. Je serais ravi de mettre mes compétences et ma passion au service de votre projet.",
+    paragraphe4: "Merci de votre visite et à bientôt  !",
+  };
+
   const devSkills = [
     { name: "HTML", img: html },
     { name: "CSS", img: css },
@@ -45,18 +54,12 @@ function About() {
       <div className="AboutMe">
         <div className="tape-section"></div>
         <h1>À PROPOS</h1>
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin
-          literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-          College in Virginia
-        </p>
-        <p>
-          Looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the
-          cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections
-          1.10.32 and 1.10.33 of de Finibus Bonorum et Malorum (The Extremes of Good and Evil) by Cicero, written in 45
-          BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of
-          Lorem Ipsum
-        </p>
+        <div className="textAbout">
+          <p>{textAbout.paragraphe1}</p>
+          <p>{textAbout.paragraphe2}</p>
+          <p>{textAbout.paragraphe3}</p>
+          <p>{textAbout.paragraphe4}</p>
+        </div>
       </div>
 
       <div className="skills">
@@ -109,6 +112,13 @@ function About() {
             <img src={cv} alt="cv" />
           </a>
         </div>
+      </div>
+
+      <div className="conclusion-div">
+        <p>
+          → Découvrez en plus ←
+          <br />→ Depuis un écran d&apos;ordinateur ←
+        </p>
       </div>
     </div>
   );

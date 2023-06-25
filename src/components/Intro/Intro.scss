@@ -86,6 +86,10 @@
     strong {
       width: 93%;
       height: 90%;
+
+      &.slider-border {
+        border: none;
+      }
     }
   }
 }
@@ -203,5 +207,79 @@
   .clickedButton {
     @extend .button;
     background-color: #a09d89;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                      Arrow div                                        
+/* ------------------------------------------------------------------------------------------------ */
+
+.arrowDiv {
+  position: absolute;
+  top: 94vh;
+  left: 40vw;
+  color: white;
+  font-size: 0.9vw;
+  background-color: #39519f;
+
+  p {
+    position: relative;
+    font-family: $font-family_3;
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                      Mobile                                      
+/* ------------------------------------------------------------------------------------------------ */
+
+@media screen and (max-width: 900px) {
+  .arrowDiv {
+    left: 33vw;
+    p {
+      font-size: 3vw;
+    }
+  }
+
+  .card2Container {
+    display: none;
+  }
+
+  .card3Container {
+    display: none;
+  }
+
+  .card4Container {
+    display: none;
+  }
+
+  .card1Container {
+    .card1 {
+      left: 5vw;
+      top: 20vh;
+      width: 90vw;
+      height: 70vh;
+    }
+
+    h3 {
+      font-size: 4vw;
+    }
+    h4 {
+      font-size: 2.5vw;
+    }
+  }
+
+  .cardTitle {
+    left: 5vw;
+    top: 5vh;
+    width: 90vw;
+    height: 10vh;
+
+    h1 {
+      font-size: 8vw;
+    }
+
+    h2 {
+      font-size: 3vw;
+    }
   }
 }

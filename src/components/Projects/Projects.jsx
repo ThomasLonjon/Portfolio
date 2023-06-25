@@ -6,6 +6,7 @@ import mario from "../../assets/img/mario.png";
 import guesswhat from "../../assets/img/GuessWhat.png";
 import holimap from "../../assets/img/Holymap.png";
 import "./Projects.scss";
+import { Link } from "react-router-dom";
 
 function Projects() {
   // ---------------------------------------------HandleIndex-----------------------------------------
@@ -38,7 +39,10 @@ function Projects() {
         <Draggable cancel="strong">
           <div className="cardProject1 card">
             <h3>HOLIMAP FOR HOLIDAYS</h3>
-            <img src={holimap} alt="holimap" className="imgProject" />
+            <Link to="Holimap" target="_blank" rel="noopener noreferrer">
+              <img src={holimap} alt="holimap" className="imgProject" />
+            </Link>
+
             <div className="bottom-icons">
               <div className="stack">
                 <span>HTML</span>
@@ -89,7 +93,10 @@ function Projects() {
         <Draggable cancel="strong">
           <div className="cardProject3 card">
             <h3>GUESS WHAT</h3>
-            <img src={guesswhat} alt="guessWhat" className="imgProject" />
+            <Link to="GuessWhat" target="_blank" rel="noopener noreferrer">
+              <img src={guesswhat} alt="guessWhat" className="imgProject" />
+            </Link>
+
             <div className="bottom-icons">
               <div className="stack">
                 <span>HTML</span>

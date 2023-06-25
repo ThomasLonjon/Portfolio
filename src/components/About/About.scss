@@ -6,12 +6,13 @@
 
 .AboutMe {
   @extend .card;
+
   padding-left: 1.5vw;
   padding-right: 1.5vw;
   top: 105vh;
   left: 3vw;
   width: 40vw;
-  height: 30vh;
+  height: 34vh;
   background-image: url(../src/assets/img/paper2.jpg);
 
   h1 {
@@ -20,6 +21,19 @@
   p {
     font-size: 0.8vw;
     margin-top: 1vw;
+  }
+
+  .textAbout {
+    p {
+      font-size: 0.85vw;
+      margin: 0;
+      padding: 0.5vw 0 0.5vw 0;
+    }
+
+    li {
+      font-size: 0.85vw;
+      list-style-type: circle;
+    }
   }
 }
 
@@ -31,7 +45,7 @@
   @extend .card;
   padding-left: 1.5vw;
   padding-right: 1.5vw;
-  top: 142vh;
+  top: 145vh;
   left: 3vw;
   width: 40vw;
   height: 30vh;
@@ -103,10 +117,10 @@
 
 .contactMe {
   @extend .card;
-  top: 178vh;
+  top: 180vh;
   left: 12vw;
   width: 20vw;
-  height: 18vh;
+  height: 17vh;
   background-image: url(../src/assets/img/paper1bis.jpg);
   padding-left: 1.5vw;
   padding-right: 1.5vw;
@@ -132,20 +146,144 @@
       border-radius: 1vw;
       text-align: center;
       cursor: pointer;
-	  &:hover{
-		transform: scale(1.1)
-	}
+      &:hover {
+        transform: scale(1.1);
+      }
 
       span {
         font-size: 0.75vw;
         cursor: pointer;
-		
       }
 
       img {
         width: 3vw;
         cursor: pointer;
       }
+    }
+  }
+}
+
+.conclusion-div {
+  display: none;
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                         Mobile                                   
+/* ------------------------------------------------------------------------------------------------ */
+
+@media screen and (max-width: 900px) {
+  .AboutMe {
+    left: 5vw;
+    width: 90vw;
+    height: 49vh;
+    h1 {
+      font-size: 7vw;
+      padding-left: 2vw;
+    }
+    .textAbout {
+      p {
+        padding-top: 1vh;
+        font-size: 3.4vw;
+        padding-left: 2vw;
+      }
+    }
+  }
+
+  .skills {
+    display: block;
+    top: 161vh;
+    left: 5vw;
+    width: 90vw;
+    height: 63vh;
+    h1 {
+      margin-left: 3vw;
+      margin-top: 5%;
+      font-size: 7vw;
+    }
+
+    .SkillsSection {
+      justify-content: space-between;
+    }
+
+    .devSkillsContainer {
+      margin-top: 5%;
+      justify-content: center;
+      width: 95%;
+      height: 30%;
+      flex-wrap: wrap;
+      margin-bottom: 0;
+    }
+
+    .urbaSkillsContainer {
+      justify-content: center;
+      width: 95%;
+      height: 30%;
+      flex-wrap: wrap;
+    }
+
+    .skillButton {
+      margin-right: 2%;
+      margin-bottom: 2%;
+      padding: 1.3%;
+      border-radius: 1vw;
+      height: 90%;
+    }
+
+    span {
+      font-size: 4vw;
+    }
+
+    img {
+      width: 14vw;
+    }
+  }
+
+  .contactMe {
+    top: 231vh;
+    left: 5%;
+    width: 90vw;
+    height: 22vh;
+
+    h1 {
+      font-size: 7vw;
+      padding-left: 2vw;
+    }
+    .contactContainer {
+      .contactButton {
+        align-items: center;
+        margin-right: 4%;
+        margin-left: 4%;
+        padding: 3% 4% 1% 4%;
+        border-radius: 1vw;
+
+        span {
+          font-size: 4vw;
+        }
+
+        img {
+          width: 10vw;
+        }
+      }
+    }
+  }
+
+  .conclusion-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    top: 259vh;
+    left: 11vw;
+    color: white;
+    background-color: #39519f;
+
+    p {
+      margin-left: auto;
+      margin-right: auto;
+      width: 80vw;
+      text-align: center;
+      font-size: 4vw;
+      font-family: $font-family_3;
     }
   }
 }

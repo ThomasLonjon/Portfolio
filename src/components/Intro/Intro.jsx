@@ -216,6 +216,11 @@ function Intro() {
           </div>
         </Draggable>
       </div>
+
+      <div className="arrowDiv">
+        <p>↓ Suite de la visite ↓</p>
+        <div></div>
+      </div>
     </div>
   );
 }

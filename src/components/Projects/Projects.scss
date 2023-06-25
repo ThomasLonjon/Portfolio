@@ -89,10 +89,10 @@ a {
 
   .cardProject1 {
     @extend .cardHandCursor;
-    top: 119vh;
+    top: 116vh;
     left: 49vw;
     width: 25vw;
-    height: 35vh;
+    height: 38vh;
     background-image: url(../src/assets/img/paper1bis.jpg);
   }
 }
@@ -107,10 +107,10 @@ a {
 
   .cardProject2 {
     @extend .cardHandCursor;
-    top: 159vh;
+    top: 158vh;
     left: 54vw;
     width: 25vw;
-    height: 35vh;
+    height: 38vh;
     background-image: url(../src/assets/img/paper4.jpg);
   }
 }
@@ -125,10 +125,38 @@ a {
 
   .cardProject3 {
     @extend .cardHandCursor;
-    top: 135vh;
+    top: 134vh;
     left: 72vw;
     width: 25vw;
-    height: 35vh;
-    background-image: url(../src/assets/img/paper2.jpg);
+    height: 38vh;
+    background-image: url(../src/assets/img/paper5.jpg);
+  }
+}
+
+/* ------------------------------------------------------------------------------------------------ */
+/*                                        Mobile                                          
+/* ------------------------------------------------------------------------------------------------ */
+
+@media screen and (max-width: 900px) {
+  .cardProject1Container {
+    .cardProject1 {
+      display: none;
+    }
+  }
+
+  .cardProject2Container {
+    .cardProject2 {
+      display: none;
+    }
+  }
+
+  .cardProject3Container {
+    .cardProject3 {
+      display: none;
+    }
+  }
+
+  .project-section-title {
+    display: none;
   }
 }

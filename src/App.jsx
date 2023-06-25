@@ -1,9 +1,9 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.scss";
 
-import Home from "./pages/Home";
-import Holimap from "./pages/Holimap";
-import GuessWhat from "./pages/GuessWhat";
+import Home from "./pages/Home/Home";
+import Holimap from "./pages/Holimap/Holimap";
+import GuessWhat from "./pages/GuessWhat/GuessWhat";
 import { ZindexProvider } from "./context/Zindex";
 
 function App() {

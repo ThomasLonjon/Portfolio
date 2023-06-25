@@ -4,7 +4,7 @@ import "./Slider.scss";
 function Slider({ maxRange, defaultRange, unit, rangeValue, setRangeValue }) {
   return (
     <div className="sliderContainer">
-      <strong className="no-cursor">
+      <strong className="slider-border">
         <input
           className="slider"
           type="range"
