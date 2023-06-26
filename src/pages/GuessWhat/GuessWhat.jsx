@@ -1,10 +1,11 @@
 import "./GuessWhat.scss";
 import video from "../../assets/video/GuessWhat.mp4";
+import paper2 from "../../assets/img/paper2.jpg";
 
 function GuessWhat() {
   return (
     <div className="backgroundHolimap">
-      <div className="projectContainer">
+      <div className="projectContainer" style={{ backgroundImage: `url(${paper2})`, backgroundSize: "cover" }}>
         <h1>GuessWhat!?</h1>
         <h3>Projet Wild Code School</h3>
         <p>
