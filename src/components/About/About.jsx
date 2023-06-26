@@ -24,7 +24,7 @@ function About() {
   const textAbout = {
     paragraphe1: "Bienvenue sur mon Portfolio !",
     paragraphe2:
-      " Ingénieur et architecte-urbaniste, j'ai travaillé plusieurs années en agence d'urbanisme et de paysage où j’ai participé à des projets de rénovation urbaine, qui m'ont captivés. Ma passion pour la cartographie m'a conduit à me former au développement web afin d'exploiter le potentiel narratif des cartes interactives 3D.",
+      " Ingénieur et architecte-urbaniste, j'ai travaillé plusieurs années en agence d'urbanisme et de paysage où j’ai participé à des projets de rénovation urbaine, qui m'ont captivé. Ma passion pour la cartographie m'a conduit à me former au développement web afin d'exploiter le potentiel narratif des cartes interactives 3D.",
     paragraphe3:
       "Aujourd'hui, je cherche à collaborer avec des personnes partageant les mêmes intérêts, afin de repousser les limites de la cartographie, en la rendant dynamique et participative. N'hésitez pas à me contacter si vous souhaitez discuter de projets passionnants où la cartographie joue un rôle central. Je serais ravi de mettre mes compétences et ma passion au service de votre projet.",
     paragraphe4: "Merci de votre visite et à bientôt  !",
