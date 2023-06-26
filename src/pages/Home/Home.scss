@@ -11,8 +11,12 @@
 
   h1 {
     position: absolute;
-    top: 40vh;
+    top: 45vh;
     color: white;
+    font-size: 5vw;
+    border-top: solid 1px white;
+    border-bottom: solid 1px white;
+    padding: 2vh;
   }
 }
 
@@ -20,11 +24,30 @@
   display: none;
 }
 
+.contour {
+  position: absolute;
+  border: solid 1px white;
+  margin-top: 4vh;
+  width: 96vw;
+  height: 92vh;
+}
+
 @media screen and (max-width: 900px) {
   .loader {
+    height: 300vh;
     h1 {
+      top: 40vh;
       text-align: center;
       font-size: 8vw;
+      width: 60%;
     }
+  }
+
+  .contour {
+    position: absolute;
+    border: solid 1px white;
+    margin-top: 2vh;
+    width: 92vw;
+    height: 96vh;
   }
 }

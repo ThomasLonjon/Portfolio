@@ -228,6 +228,7 @@
 
 @media screen and (max-width: 900px) {
   .arrowDiv {
+    top: 95vh;
     left: 28vw;
     p {
       font-size: 4vw;
@@ -249,7 +250,7 @@
   .card1Container {
     .card1 {
       left: 5vw;
-      top: 20vh;
+      top: 22vh;
       width: 90vw;
       height: 70vh;
     }
@@ -269,11 +270,13 @@
     height: 12vh;
 
     h1 {
+      padding-left: 2vw;
       font-size: 8vw;
     }
 
     h2 {
       font-size: 5vw;
+      padding-left: 2vw;
     }
   }
 }
