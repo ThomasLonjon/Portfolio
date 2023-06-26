@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import Draggable from "react-draggable";
 import ZindexContext from "../../context/Zindex";
 
@@ -6,7 +7,10 @@ import mario from "../../assets/img/mario.png";
 import guesswhat from "../../assets/img/GuessWhat.png";
 import holimap from "../../assets/img/Holymap.png";
 import "./Projects.scss";
-import { Link } from "react-router-dom";
+import paper1 from "../../assets/img/paper1.jpg";
+import paper1bis from "../../assets/img/paper1bis.jpg";
+import paper4 from "../../assets/img/paper4.jpg";
+import paper5 from "../../assets/img/paper5.jpg";
 
 function Projects() {
   // ---------------------------------------------HandleIndex-----------------------------------------
@@ -26,7 +30,7 @@ function Projects() {
 
   return (
     <div className="project-section">
-      <div className="project-section-title">
+      <div className="project-section-title" style={{ backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}>
         <div className="top-tape"></div>
         <h1>MES PROJETS</h1>
       </div>
@@ -37,7 +41,7 @@ function Projects() {
         style={{ zIndex: `${zIndex["cardProject1"]}` }}
       >
         <Draggable cancel="strong">
-          <div className="cardProject1 card">
+          <div className="cardProject1" style={{ backgroundImage: `url(${paper1bis})`, backgroundSize: "cover" }}>
             <h3>HOLIMAP FOR HOLIDAYS</h3>
             <Link to="Holimap" target="_blank" rel="noopener noreferrer">
               <img src={holimap} alt="holimap" className="imgProject" />
@@ -65,7 +69,7 @@ function Projects() {
         style={{ zIndex: `${zIndex["cardProject2"]}` }}
       >
         <Draggable cancel="strong">
-          <div className="cardProject2 card">
+          <div className="cardProject2" style={{ backgroundImage: `url(${paper4})`, backgroundSize: "cover" }}>
             <h3>THE MARIO PROJECT</h3>
             <a href="https://t0mle.github.io/WCS-project1/" target="_blank" rel="noopener noreferrer">
               <img src={mario} alt="mario" className="imgProject" />
@@ -91,7 +95,7 @@ function Projects() {
         style={{ zIndex: `${zIndex["cardProject3"]}` }}
       >
         <Draggable cancel="strong">
-          <div className="cardProject3 card">
+          <div className="cardProject3" style={{ backgroundImage: `url(${paper5})`, backgroundSize: "cover" }}>
             <h3>GUESS WHAT</h3>
             <Link to="GuessWhat" target="_blank" rel="noopener noreferrer">
               <img src={guesswhat} alt="guessWhat" className="imgProject" />

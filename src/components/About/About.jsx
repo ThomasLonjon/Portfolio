@@ -16,6 +16,8 @@ import illustator from "../../assets/img/ai.svg";
 import linkedin from "../../assets/img/linkedin.svg";
 import cv from "../../assets/img/cv.svg";
 import cvPdf from "../../assets/img/CV-Thomas Lonjon.pdf";
+import paper2 from "../../assets/img/paper2.jpg";
+import paper3 from "../../assets/img/paper3.jpg";
 import "./About.scss";
 
 function About() {
@@ -51,7 +53,7 @@ function About() {
 
   return (
     <div>
-      <div className="AboutMe">
+      <div className="AboutMe" style={{ backgroundImage: `url(${paper2})`, backgroundSize: "cover" }}>
         <div className="tape-section"></div>
         <h1>À PROPOS</h1>
         <div className="textAbout">
@@ -62,7 +64,7 @@ function About() {
         </div>
       </div>
 
-      <div className="skills">
+      <div className="skills" style={{ backgroundImage: `url(${paper3})`, backgroundSize: "cover" }}>
         <div className="tape-section"></div>
         <h1>COMPÉTENCES</h1>
         <div className="SkillsSection">
@@ -89,7 +91,7 @@ function About() {
         </div>
       </div>
 
-      <div className="contactMe">
+      <div className="contactMe" style={{ backgroundImage: `url(${paper3})`, backgroundSize: "cover" }}>
         <div className="tape-section"></div>
         <h1>CONTACT</h1>
         <div className="contactContainer">

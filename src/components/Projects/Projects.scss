@@ -76,7 +76,6 @@ a {
   left: 48vw;
   width: 50vw;
   height: 7vh;
-  background-image: url(../src/assets/img/paper1.jpg);
 }
 
 /* ------------------------------------------------------------------------------------------------ */
@@ -88,12 +87,12 @@ a {
   position: relative;
 
   .cardProject1 {
+    @extend .card;
     @extend .cardHandCursor;
     top: 116vh;
     left: 49vw;
     width: 25vw;
     height: 38vh;
-    background-image: url(../src/assets/img/paper1bis.jpg);
   }
 }
 
@@ -106,12 +105,12 @@ a {
   position: relative;
 
   .cardProject2 {
+    @extend .card;
     @extend .cardHandCursor;
     top: 158vh;
     left: 54vw;
     width: 25vw;
     height: 38vh;
-    background-image: url(../src/assets/img/paper4.jpg);
   }
 }
 
@@ -124,12 +123,12 @@ a {
   position: relative;
 
   .cardProject3 {
+    @extend .card;
     @extend .cardHandCursor;
     top: 134vh;
     left: 72vw;
     width: 25vw;
     height: 38vh;
-    background-image: url(../src/assets/img/paper5.jpg);
   }
 }
 
