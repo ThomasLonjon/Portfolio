@@ -10,7 +10,7 @@ function GuessWhat() {
         <p>
           Nous avons créé un Quizz en ligne. <br />
           Il est possible de choisir entre 4 thèmes, dont mon préféré : un blindtest de carte aérienne ! <br />
-          Nous nous sommes basés sur des données issues d&apos;API REST ouvertes avant de générer des questions de
+          Nous nous sommes basé.e.s sur des données issues d&apos;API REST ouvertes avant de générer des questions de
           manière totalement aléatoire.
         </p>
 
