@@ -13,6 +13,8 @@ import paper5 from "../../assets/img/paper5.jpg";
 import "./Intro.scss";
 
 function Intro() {
+  // -------------------------------------------MediaQuery-----------------------------------------
+
   const useMediaQuery = (query) => {
     const [matches, setMatches] = useState(window.matchMedia(query).matches);
 
@@ -28,8 +30,6 @@ function Intro() {
   };
 
   const isMobile = useMediaQuery("(max-width: 900px)");
-
-  console.log("isMobile", isMobile);
 
   // -------------------------------------------UseStates-----------------------------------------
 
@@ -275,8 +275,73 @@ function Intro() {
         </div>
       </div>
 
+      <div className="card2Container" onMouseDown={() => handleIndex("card2")} style={{ zIndex: `${zIndex["card2"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card2" style={{ backgroundImage: `url(${paper5})`, backgroundSize: "cover" }}>
+            <h3>GARDEZ LA VISION D&apos;ENSEMBLE</h3>
+            <h4 className="subtitle">ITINÉRAIRE</h4>
+            <Map2 {...position2} departure={position1} arrival={position3} buttonIsClicked={buttonIsClicked} />
+            <p className="credits">Mapbox, Openstreetmap, Opentripmap</p>
+          </div>
+        </Draggable>
+      </div>
+
+      <div className="card3Container" onMouseDown={() => handleIndex("card3")} style={{ zIndex: `${zIndex["card3"]}` }}>
+        <Draggable cancel="strong">
+          <div className="card3" style={{ backgroundImage: `url(${paper4bis})`, backgroundSize: "cover" }}>
+            <h3>EXPLOREZ DE NOUVELLES EXPÉRIENCES CARTOGRAPHIQUES</h3>
+            <h4 className="subtitle">DESTINATION</h4>
+            <Map3 {...position3} rangeValue={rangeValue} departure={position1} arrival={position3} />
+            <p className="credits">Mapbox, OpenstreetMap, Opentripmap</p>
+            <div className={position1.isChosen && position3.isChosen ? "" : "sliderContainerHidden"}>
+              <Slider
+                maxRange={60}
+                defaultRange={10}
+                unit="minutes à vélo"
+                rangeValue={rangeValue}
+                setRangeValue={setRangeValue}
+              />
+            </div>
+          </div>
+        </Draggable>
+      </div>
+
+      <div className="card4Container" onMouseDown={() => handleIndex("card4")} style={{ zIndex: `${zIndex["card4"]}` }}>
+        <Draggable cancel="strong">
+          <div
+            className={`card4 ${
+              buttonIsClicked.firstButton || buttonIsClicked.secondButton ? "card4Tall" : "card4Small"
+            }`}
+            style={{ backgroundImage: `url(${paper4bis})`, backgroundSize: "cover" }}
+          >
+            <div className="firstPart">
+              <h3>CHOISISSEZ VOTRE CARTE</h3>
+              <div className="buttonContainer">
+                <strong className={buttonIsClicked.firstButton ? "clickedButton" : "button"} onClick={handleClick1}>
+                  DÉPART
+                </strong>
+                <strong className={buttonIsClicked.secondButton ? "clickedButton" : "button"} onClick={handleClick2}>
+                  DESTINATION
+                </strong>
+              </div>
+            </div>
+            <div
+              className={
+                buttonIsClicked.firstButton || buttonIsClicked.secondButton ? "secondPart" : "secondPartHidden"
+              }
+            >
+              <h3> {buttonIsClicked.firstButton ? "DÉFINISSEZ VOTRE DÉPART" : "TROUVEZ VOTRE DESTINATION"}</h3>
+              <strong className="no-cursor">
+                <div id="geocoder"></div>
+              </strong>
+            </div>
+          </div>
+        </Draggable>
+      </div>
+
       <div className="arrowDiv">
         <p>↓ Suite de la visite ↓</p>
+        <div></div>
       </div>
     </div>
   );
