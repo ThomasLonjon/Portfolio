@@ -42,8 +42,8 @@ function Projects() {
       >
         <Draggable cancel="strong">
           <div className="cardProject1" style={{ backgroundImage: `url(${paper1bis})`, backgroundSize: "cover" }}>
-            <h3>HOLIMAP FOR HOLIDAYS</h3>
-            <Link to="Holimap" target="_blank" rel="noopener noreferrer">
+            <h3>HOLYMAP FOR HOLIDAYS</h3>
+            <Link to="Holymap" target="_blank" rel="noopener noreferrer">
               <img src={holimap} alt="holimap" className="imgProject" />
             </Link>
 

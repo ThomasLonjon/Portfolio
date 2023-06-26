@@ -1,12 +1,13 @@
-import "./Holimap.scss";
+import "./Holymap.scss";
 import video from "../../assets/video/HolyMap.mp4";
 import paper2 from "../../assets/img/paper2.jpg";
+import Bordless from "../../assets/img/Bordless.png";
 
 function Holimap() {
   return (
-    <div className="backgroundHolimap">
+    <div className="backgroundHolimap" style={{ backgroundImage: `url(${Bordless})`, backgroundSize: "cover" }}>
       <div className="projectContainer" style={{ backgroundImage: `url(${paper2})`, backgroundSize: "cover" }}>
-        <h1> Holimap For Holidays</h1>
+        <h1> Holymap For Holidays</h1>
         <h3>Hackaton</h3>
         <p>
           Hackaton de 2 jours sur le thème des vacances à partir d&apos;API REST ouvertes.

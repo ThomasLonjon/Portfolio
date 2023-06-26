@@ -7,11 +7,10 @@ function Home() {
   // ---------------------------------------------Return---------------------------------------------
 
   return (
-    <div className="background">
+    <div className="background" style={{ backgroundImage: `url(${Bordless})`, backgroundSize: "cover" }}>
       <Intro />
       <About />
       <Projects />
-      <img className="background" src={Bordless} alt="Bordless" />
     </div>
   );
 }
