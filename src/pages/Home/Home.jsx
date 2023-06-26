@@ -11,7 +11,7 @@ function Home() {
       <Intro />
       <About />
       <Projects />
-      <img src={Bordless} alt="Bordless" />
+      <img className="background" src={Bordless} alt="Bordless" />
     </div>
   );
 }
