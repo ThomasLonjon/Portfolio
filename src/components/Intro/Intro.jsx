@@ -7,6 +7,13 @@ import Slider from "../Slider/Slider";
 import mapboxgl from "mapbox-gl";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import ZindexContext from "../../context/Zindex";
+import paper1 from "../../assets/img/paper1.jpg";
+import paper1bis from "../../assets/img/paper1bis.jpg";
+import paper2 from "../../assets/img/paper2.jpg";
+import paper3 from "../../assets/img/paper3.jpg";
+import paper4 from "../../assets/img/paper4.jpg";
+import paper4bis from "../../assets/img/paper4bis.jpg";
+import paper5 from "../../assets/img/paper5.jpg";
 import "./Intro.scss";
 
 function Intro() {
@@ -150,6 +157,7 @@ function Intro() {
             <h4 className="subtitle">DÉPART</h4>
             <Map1 {...position1} departure={position1} arrival={position3} />
             <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
+            <img src={paper1} alt="" />
           </div>
         </Draggable>
       </div>
