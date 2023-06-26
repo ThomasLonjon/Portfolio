@@ -1,6 +1,7 @@
 import Intro from "../../components/Intro/Intro";
 import About from "../../components/About/About";
 import Projects from "../../components/Projects/Projects";
+import Bordless from "../../assets/img/Bordless.png";
 
 function Home() {
   // ---------------------------------------------Return---------------------------------------------
@@ -10,6 +11,7 @@ function Home() {
       <Intro />
       <About />
       <Projects />
+      <img src={Bordless} alt="Bordless" />
     </div>
   );
 }
