@@ -150,9 +150,13 @@ function Intro() {
         <h2>DÉVELOPPEUR WEB FULLSTACK JS</h2>
       </div>
 
-      <div className="card1Container" onMouseDown={() => handleIndex("card1")} style={{ zIndex: `${zIndex["card1"]}` }}>
+      <div
+        className="card1Container"
+        onMouseDown={() => handleIndex("card1")}
+        style={{ zIndex: `${zIndex["card1"]}`, backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}
+      >
         <Draggable cancel="strong">
-          <div className="card1">
+          <div className="card1" style={{ backgroundImage: `url(${paper4bis})`, backgroundSize: "cover" }}>
             <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
             <h4 className="subtitle">DÉPART</h4>
             <Map1 {...position1} departure={position1} arrival={position3} />
@@ -163,7 +167,7 @@ function Intro() {
 
       <div className="card2Container" onMouseDown={() => handleIndex("card2")} style={{ zIndex: `${zIndex["card2"]}` }}>
         <Draggable cancel="strong">
-          <div className="card2">
+          <div className="card2" style={{ backgroundImage: `url(${paper5})`, backgroundSize: "cover" }}>
             <h3>GARDEZ LA VISION D&apos;ENSEMBLE</h3>
             <h4 className="subtitle">ITINÉRAIRE</h4>
             <Map2 {...position2} departure={position1} arrival={position3} buttonIsClicked={buttonIsClicked} />
@@ -174,7 +178,7 @@ function Intro() {
 
       <div className="card3Container" onMouseDown={() => handleIndex("card3")} style={{ zIndex: `${zIndex["card3"]}` }}>
         <Draggable cancel="strong">
-          <div className="card3">
+          <div className="card3" style={{ backgroundImage: `url(${paper4bis})`, backgroundSize: "cover" }}>
             <h3>EXPLOREZ DE NOUVELLES EXPÉRIENCES CARTOGRAPHIQUES</h3>
             <h4 className="subtitle">DESTINATION</h4>
             <Map3 {...position3} rangeValue={rangeValue} departure={position1} arrival={position3} />
@@ -198,6 +202,7 @@ function Intro() {
             className={`card4 ${
               buttonIsClicked.firstButton || buttonIsClicked.secondButton ? "card4Tall" : "card4Small"
             }`}
+            style={{ backgroundImage: `url(${paper4bis})`, backgroundSize: "cover" }}
           >
             <div className="firstPart">
               <h3>CHOISISSEZ VOTRE CARTE</h3>
