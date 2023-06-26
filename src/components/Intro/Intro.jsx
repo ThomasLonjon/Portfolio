@@ -13,6 +13,24 @@ import paper5 from "../../assets/img/paper5.jpg";
 import "./Intro.scss";
 
 function Intro() {
+  const useMediaQuery = (query) => {
+    const [matches, setMatches] = useState(window.matchMedia(query).matches);
+
+    useEffect(() => {
+      const mediaQuery = window.matchMedia(query);
+      const handleResize = () => setMatches(mediaQuery.matches);
+
+      mediaQuery.addListener(handleResize);
+      return () => mediaQuery.removeListener(handleResize);
+    }, [query]);
+
+    return matches;
+  };
+
+  const isMobile = useMediaQuery("(max-width: 900px)");
+
+  console.log("isMobile", isMobile);
+
   // -------------------------------------------UseStates-----------------------------------------
 
   const [position1, setPosition1] = useState({
@@ -138,7 +156,9 @@ function Intro() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [positionGeoCoder.lat, positionGeoCoder.lng]);
 
-  return (
+  // ---------------------------------------------Desktop-----------------------------------------
+
+  const desktop = () => (
     <div>
       <div className="cardTitle" style={{ backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}>
         <div className="tape-section"></div>
@@ -231,6 +251,37 @@ function Intro() {
       </div>
     </div>
   );
+
+  // ---------------------------------------------Mobile-----------------------------------------
+
+  const mobile = () => (
+    <div>
+      <div className="cardTitle" style={{ backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}>
+        <div className="tape-section"></div>
+        <h1>Thomas Lonjon</h1>
+        <h2>DÉVELOPPEUR WEB FULLSTACK JS</h2>
+      </div>
+
+      <div
+        className="card1Container"
+        onMouseDown={() => handleIndex("card1")}
+        style={{ zIndex: `${zIndex["card1"]}`, backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}
+      >
+        <div className="card1" style={{ backgroundImage: `url(${paper4bis})`, backgroundSize: "cover" }}>
+          <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
+          <h4 className="subtitle">DÉPART</h4>
+          <Map1 {...position1} departure={position1} arrival={position3} />
+          <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
+        </div>
+      </div>
+
+      <div className="arrowDiv">
+        <p>↓ Suite de la visite ↓</p>
+      </div>
+    </div>
+  );
+
+  return <>{!isMobile ? desktop() : mobile()}</>;
 }
 
 export default Intro;

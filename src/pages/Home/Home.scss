@@ -10,6 +10,7 @@
   z-index: 1000;
 
   h1 {
+    font-family: "Copperplate";
     position: absolute;
     top: 45vh;
     color: white;
@@ -35,6 +36,7 @@
 @media screen and (max-width: 900px) {
   .loader {
     height: 300vh;
+    width: 100vw;
     h1 {
       top: 40vh;
       text-align: center;
