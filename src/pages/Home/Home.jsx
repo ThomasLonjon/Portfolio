@@ -21,7 +21,7 @@ function Home() {
     <>
       <div className={isLoading ? "loader" : "loaderHidden"}>
         <div className="contour"></div>
-        <h1>Bienvenue sur mon Porfolio !</h1>
+        <h1>Bienvenue sur mon Portfolio !</h1>
       </div>
       <div className="background" style={{ backgroundImage: `url(${Bordless})`, backgroundSize: "cover" }}>
         <Intro />
