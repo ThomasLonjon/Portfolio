@@ -1,1 +1,21 @@
 @import "../../App.scss";
+
+.loader {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  background-color: #39519f;
+  width: 100vw;
+  height: 200vh;
+  z-index: 1000;
+
+  h1 {
+    position: absolute;
+    top: 40vh;
+    color: white;
+  }
+}   
+
+.loaderHidden {
+  display: none;
+}
