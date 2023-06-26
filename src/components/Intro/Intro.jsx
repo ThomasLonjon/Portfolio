@@ -144,7 +144,7 @@ function Intro() {
 
   return (
     <div>
-      <div className="cardTitle">
+      <div className="cardTitle" style={{ backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}>
         <div className="tape-section"></div>
         <h1>Thomas Lonjon</h1>
         <h2>DÉVELOPPEUR WEB FULLSTACK JS</h2>
@@ -157,7 +157,6 @@ function Intro() {
             <h4 className="subtitle">DÉPART</h4>
             <Map1 {...position1} departure={position1} arrival={position3} />
             <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
-            <img src={paper1} alt="" />
           </div>
         </Draggable>
       </div>
