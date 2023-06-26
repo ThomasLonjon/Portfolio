@@ -14,8 +14,17 @@
     top: 40vh;
     color: white;
   }
-}   
+}
 
 .loaderHidden {
   display: none;
+}
+
+@media screen and (max-width: 900px) {
+  .loader {
+    h1 {
+      text-align: center;
+      font-size: 8vw;
+    }
+  }
 }
