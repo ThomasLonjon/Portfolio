@@ -125,14 +125,13 @@ function Map2({ lat, lng, zoom, departure, arrival }) {
 
       // ------------------------------------ fit zoom to the bounds of the route ------------------------------------
 
-      // map.current.fitBounds(
-      //   [
-      //     [departure.lat, departure.lng],
-      //     [arrival.lat, arrival.lng],
-      //   ],
-      //   { padding: 120 }
-      // );
+      const sw = new mapboxgl.LngLat(departure.lat, departure.lng);
+      const ne = new mapboxgl.LngLat(arrival.lat, arrival.lng);
+      const llb = new mapboxgl.LngLatBounds(sw, ne);
+
+      map.current.fitBounds(llb, { padding: 120 });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [departure, arrival]);
 
   // ---------------------------------------- RETURN----------------------------------------
