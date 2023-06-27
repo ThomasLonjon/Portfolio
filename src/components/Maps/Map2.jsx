@@ -131,7 +131,7 @@ function Map2({ lat, lng, zoom, departure, arrival }) {
 
       map.current.fitBounds(llb);
       // map.current.fitBounds(llb, { padding: 120 });
-      map.current.fitBounds(llb), { padding: 50 };
+      map.current.fitBounds(llb), { padding: 100 };
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [departure, arrival]);
