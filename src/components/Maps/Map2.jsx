@@ -125,15 +125,13 @@ function Map2({ lat, lng, zoom, departure, arrival }) {
 
       // ------------------------------------ fit zoom to the bounds of the route ------------------------------------
 
-      map.current.fitBounds(
-        [
-          [departure.lat, departure.lng],
-          [arrival.lat, arrival.lng],
-        ],
-        { padding: 120 }
-      );
-
-      // map.current.moveLayer("route", "country");
+      // map.current.fitBounds(
+      //   [
+      //     [departure.lat, departure.lng],
+      //     [arrival.lat, arrival.lng],
+      //   ],
+      //   { padding: 120 }
+      // );
     }
   }, [departure, arrival]);
 
