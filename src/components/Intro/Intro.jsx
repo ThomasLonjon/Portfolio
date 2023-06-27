@@ -29,7 +29,7 @@ function Intro() {
     return matches;
   };
 
-  const isMobile = useMediaQuery("(max-width: 900px)");
+  const isMobile = useMediaQuery("(max-width: 600px)");
 
   // -------------------------------------------UseStates-----------------------------------------
 
