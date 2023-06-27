@@ -8,7 +8,7 @@ function GuessWhat() {
     <div className="backgroundHolimap" style={{ backgroundImage: `url(${Bordless})`, backgroundSize: "cover" }}>
       <div className="projectContainer" style={{ backgroundImage: `url(${paper2})`, backgroundSize: "cover" }}>
         <h1>GuessWhat!?</h1>
-        <h3>Projet Wild Code School</h3>
+        <h3>Projet</h3>
         <p>
           Nous avons créé un Quizz en ligne. <br />
           Il est possible de choisir entre 4 thèmes, dont mon préféré : un blindtest de carte aérienne ! <br />
