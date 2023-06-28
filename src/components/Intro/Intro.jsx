@@ -169,7 +169,7 @@ function Intro() {
       </div>
 
       <div
-        className={isMobile ? "card1ContainerHidden" : "card1Container"}
+        className={!isMobile ? "card1ContainerHidden" : "card1Container"}
         onMouseDown={() => handleIndex("card1")}
         style={{ zIndex: `${zIndex["card1"]}`, backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}
       >
@@ -182,7 +182,7 @@ function Intro() {
       </div>
 
       <div
-        className={isMobile ? "card1Container" : "card1ContainerHidden"}
+        className={!isMobile ? "card1Container" : "card1ContainerHidden"}
         onMouseDown={() => handleIndex("card1")}
         style={{ zIndex: `${zIndex["card1"]}`, backgroundImage: `url(${paper1})`, backgroundSize: "cover" }}
       >
