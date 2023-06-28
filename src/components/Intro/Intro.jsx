@@ -177,7 +177,7 @@ function Intro() {
           <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
           <h4 className="subtitle">DÉPART</h4>
           <Map1 {...position1} departure={position1} arrival={position3} />
-          <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
+          <p className="credits"> Mapbox, Openstreetmap, Opentripmap, Madison Draper</p>
         </div>
       </div>
 
@@ -191,7 +191,7 @@ function Intro() {
             <h3>PRÉPAREZ VOTRE EXPÉDITION</h3>
             <h4 className="subtitle">DÉPART</h4>
             <Map1 {...position1} departure={position1} arrival={position3} />
-            <p className="credits"> Mapbox, Openstreetmap, Opentripmap</p>
+            <p className="credits"> Mapbox, Openstreetmap, Opentripmap, , Madison Draper</p>
           </div>
         </Draggable>
       </div>
@@ -202,7 +202,7 @@ function Intro() {
             <h3>GARDEZ LA VISION D&apos;ENSEMBLE</h3>
             <h4 className="subtitle">ITINÉRAIRE</h4>
             <Map2 {...position2} departure={position1} arrival={position3} buttonIsClicked={buttonIsClicked} />
-            <p className="credits">Mapbox, Openstreetmap, Opentripmap</p>
+            <p className="credits">Mapbox, Openstreetmap, Opentripmap, Madison Draper</p>
           </div>
         </Draggable>
       </div>
@@ -213,7 +213,7 @@ function Intro() {
             <h3>EXPLOREZ DE NOUVELLES EXPÉRIENCES CARTOGRAPHIQUES</h3>
             <h4 className="subtitle">DESTINATION</h4>
             <Map3 {...position3} rangeValue={rangeValue} departure={position1} arrival={position3} />
-            <p className="credits">Mapbox, OpenstreetMap, Opentripmap</p>
+            <p className="credits">Mapbox, OpenstreetMap, Opentripmap, Madison Draper</p>
             <div className={position1.isChosen && position3.isChosen ? "" : "sliderContainerHidden"}>
               <Slider
                 maxRange={60}
