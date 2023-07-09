@@ -175,6 +175,7 @@ function Map1({ lat, lng, zoom, pitch, isChosen, departure, arrival }) {
 
       getRoute();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [departure, arrival]);
 
   // ---------------------------------------- RETURN----------------------------------------
